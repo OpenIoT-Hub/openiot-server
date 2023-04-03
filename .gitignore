@@ -17,5 +17,5 @@
 # IDE workspace
 /.idea
 
-# temp
-go.work
+# some development note
+/docs/note/assets
