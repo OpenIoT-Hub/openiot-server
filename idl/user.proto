@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package follow;
+
+option go_package = "tiktok/follow";
+
+service openiotUserService {
+  rpc Ping(PingReq) returns (BaseRsp){};
+
+}
+
+message User {
+  int64 id = 1; // 用户id
+  string name = 2; // 用户名称
+  optional int64 follow_count = 3; // 关注总数
+  optional int64 follower_count = 4; // 粉丝总数
+  string authority = 5; // true-已关注，false-未关注
+}
+
+message BaseRsp {
+  int64 status_code = 1; // 状态码，0-成功，其他值-失败
+  string status_msg = 2; // 返回状态描述
+}
+
+message PingReq {
+  string message = 1;
+}
