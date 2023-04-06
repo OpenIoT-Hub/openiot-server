@@ -9,11 +9,11 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./pkg/configs/sql:/docker-entrypoint-initdb.d
+      - ./pkg/sql:/docker-entrypoint-initdb.d
     environment:
-      - MYSQL_DATABASE=tiktok
-      - MYSQL_USER=tiktok
-      - MYSQL_PASSWORD=tiktok
+      - MYSQL_DATABASE=openiot
+      - MYSQL_USER=openiot
+      - MYSQL_PASSWORD=openiot
       - MYSQL_ROOT_PASSWORD=123456
 
   # Redis
@@ -35,8 +35,8 @@ services:
       - 5672:5672
       - 15672:15672
     environment:
-      - RABBITMQ_DEFAULT_USER=tiktok
-      - RABBITMQ_DEFAULT_PASS=tiktok
+      - RABBITMQ_DEFAULT_USER=openiot
+      - RABBITMQ_DEFAULT_PASS=openiot
 
   # k-v store
   etcd:

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package follow;
 
-option go_package = "tiktok/follow";
+option go_package = "openiot/user";
 
 service openiotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
