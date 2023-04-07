@@ -2,9 +2,9 @@
 generate:
 	kitex \
 	-service "openiot-user" \
-	-module "github.com/anxiu0101/openiot-server" \
+	-module "github.com/anxiu0101/openiot-hub" \
 	-type protobuf \
-	-I ./../../idl/ follow.proto \
+	-I ./../../idl/ user.proto \
 	&& go mod tidy
 
 .PHONY: run_client
