@@ -1,8 +1,6 @@
 package config
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/configor"
 )
 
@@ -52,14 +50,8 @@ var Config = struct {
 
 func Setup() {
 	configor.New(&configor.Config{
-		Debug:                true,
+		Debug: true,
+		// Verbose:           true,
 		ErrorOnUnmatchedKeys: true,
-	}).
-		Load(&Config, "./config/config.toml")
-	//configor.New(&configor.Config{
-	//	Verbose: true,
-	//	ErrorOnUnmatchedKeys: true,
-	//}).
-	//	Load(&Config, "./config/config.toml")
-	fmt.Printf("config: %+v", Config)
+	}).Load(&Config, "./config/config.toml")
 }

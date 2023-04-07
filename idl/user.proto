@@ -6,22 +6,34 @@ option go_package = "openiot/user";
 
 service OpeniotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
-
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp);
 }
 
 message User {
-  int64 id = 1;           // 用户id
-  string name = 2;        // 用户名称
-  optional int64 follow_count = 3; // 关注总数
-  optional int64 follower_count = 4; // 粉丝总数
-  string authority = 5; // true-已关注，false-未关注
+  uint64 id = 1; // 用户id
+  string name = 2; // 用户名称
+  string email = 3; // 用户工作邮箱
+  string phone_num = 4; // 用户手机号码
+  string avatar = 5; // 用户头像地址
+  string position = 6; // 用户职位，从 Authority 表中读取
 }
 
+/******************************/
+/** Request Collection, Req **/
+message PingReq {
+  string message = 1;
+}
+message GetUserInfoReq {
+  uint64 user_id = 1;
+}
+
+/******************************/
+/** Response Collection, Rsp **/
 message BaseRsp {
   int64 status_code = 1; // 状态码，0-成功，其他值-失败
   string status_msg = 2; // 返回状态描述
 }
-
-message PingReq {
-  string message = 1;
+message GetUserInfoRsp {
+  BaseRsp base = 1;
+  User user_info = 2;
 }
