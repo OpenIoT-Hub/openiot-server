@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/anxiu0101/openiot-server/pkg/errno"
+	"github.com/anxiu0101/openiot-hub/pkg/errno"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 )

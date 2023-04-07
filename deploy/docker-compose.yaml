@@ -9,7 +9,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ./pkg/sql:/docker-entrypoint-initdb.d
+      - ./deploy/sql:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_DATABASE=openiot
       - MYSQL_USER=openiot
@@ -25,7 +25,7 @@ services:
     volumes:
       - /usr/local/redis:/var/lib/redis
     environment:
-      - REDIS_PASSWORD=tiktok
+      - REDIS_PASSWORD=openiot
       - ALLOW_EMPTY_PASSWORD=no
 
   # Message Broker

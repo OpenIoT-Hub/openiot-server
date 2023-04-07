@@ -43,3 +43,26 @@ Furthermore, the core function of robot dog(RD in follows) scheduling need a wel
   > 参考这个链接的 external 设计，抽象一个表用于存储机械狗监控的指标数据。可以叫做 quota ？
   - Send a message to admins phones. use the service of SMS.
 - all RB patrol in the factory and 
+
+# Project Structure
+
+## Gateway
+
+## Microservice
+
+For each different microservice, we have similar file struct like follows, 
+```shell
+user/
+├── configs     // 微服务启动配置，包括数据库连接
+├── service     // 微服务业务代码，服务层
+├── model       // 微服务相关结构体，模型层
+├── script      // 编译指令，由 Kitex 生成
+├── pack        // 请求封装，序列化层，将 BO -> DTO
+├── utils       // 通用函数，在项目根路径中
+├── main.go     // 程序入口
+├── handler.go  // 请求处理，控制器层
+├── kitex.yaml  // Kitex 配置项
+└── Makefile    // 常用指令
+```
+
+

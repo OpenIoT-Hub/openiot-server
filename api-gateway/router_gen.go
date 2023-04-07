@@ -3,7 +3,7 @@
 package main
 
 import (
-	router "github.com/anxiu0101/openiot-server/api-gateway/biz/router"
+	router "github.com/anxiu0101/openiot-hub/api-gateway/biz/router"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 
