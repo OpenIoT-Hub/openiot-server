@@ -1,36 +1,36 @@
-AppMode = "debug"
-AppName = "openiot-hub"
+AppMode = 'debug'
+AppName = 'openiot-hub'
+
+[Avatar]
+
+[DB]
+Name = 'openiot'
+Password = '123456'
+Port = 3306
+Type = 'mysql'
+User = 'openiot'
+
+[RabbitMQ]
+RabbitMQ = 'amqp'
+RabbitMQHost = 'localhost'
+RabbitMQPassWord = 'openiot'
+RabbitMQPort = '5672'
+RabbitMQUser = 'openiot'
+
+[Redis]
+DbName = 3
+IdleTimeout = 200
+MaxActive = 30
+MaxIdle = 30
+Password = 'openiot'
+Port = 6379
+
+[SMS]
 
 [Server]
 ReadTimeout = 60
 WriteTimeout = 60
 
-[DB]
-Type = "mysql"
-Name = "openiot"
-User = "openiot"
-Password = "123456"
-Port = 3306
-
-[Redis]
-Password = "openiot"
-DbName = 3
-Port = 6379
-MaxIdle = 30
-MaxActive = 30
-IdleTimeout = 200
-
-[RabbitMQ]
-RabbitMQ = "amqp"
-RabbitMQUser = "openiot"
-RabbitMQPassWord = "openiot"
-RabbitMQHost = "localhost"
-RabbitMQPort = "5672"
-
-[Avatar]
-
 [Wechat]
-AppID = ""
-Secret = ""
-
-[SMS]
+AppID = ''
+Secret = ''
