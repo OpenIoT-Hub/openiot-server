@@ -10,12 +10,15 @@ type OpeniotUserServiceImpl struct{}
 
 // Ping implements the OpeniotUserServiceImpl interface.
 func (s *OpeniotUserServiceImpl) Ping(ctx context.Context, req *user.PingReq) (resp *user.BaseRsp, err error) {
-	// TODO: Your code here...
+	resp = new(user.BaseRsp)
+	resp.StatusCode = 200
+	resp.StatusMsg = "Pong!"
 	return
 }
 
 // GetUserInfo implements the OpeniotUserServiceImpl interface.
 func (s *OpeniotUserServiceImpl) GetUserInfo(ctx context.Context, req *user.GetUserInfoReq) (resp *user.GetUserInfoRsp, err error) {
-	// TODO: Your code here...
+	resp = new(user.GetUserInfoRsp)
+
 	return
 }

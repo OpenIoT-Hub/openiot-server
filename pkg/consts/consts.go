@@ -7,41 +7,30 @@ const (
 
 	JwtSecret = "openiot-hub-ᕙ(` ´)ᕗ"
 
-	//// RPC
-	//MuxConnection  = 1
-	//RPCTimeout     = 3 * time.Second
-	//ConnectTimeout = 50 * time.Millisecond
-	//
-	//// 服务名
-	//GatewayServiceName = "tiktok-gateway"
-	//UserServiceName    = "tiktok-user"
-	//CommentServiceName = "tiktok-comment"
-	//FollowServiceName  = "tiktok-follow"
-	//ChatServiceName    = "tiktok-chat"
-	//VideoServiceName   = "tiktok-video"
-	//
-	//// 服务端口
-	//GatewayListenAddress        = "127.0.0.1:8080"
-	//UserServiceListenAddress    = "127.0.0.1:8888"
-	//CommentServiceListenAddress = "127.0.0.1:8889"
-	//FollowServiceListenAddress  = "127.0.0.1:8890"
-	//ChatServiceListenAddress    = "127.0.0.1:8891"
-	//VideoServiceListenAddress   = "127.0.0.1:8892"
-	//
-	//// 表格名
-	//UserTableName    = "user"
-	//ChatTableName    = "message"
-	//CommentTableName = "comment"
-	//FollowTableName  = "follow"
-	//VideoTableName   = "video"
-	//
-	//// 雪花
-	//SnowflakeWorkerID     = 0
-	//SnowflakeDatacenterID = 0
-	//
-	//// Etcd
-	//EtcdEndpoints = "127.0.0.1:2379"
-	//
+	// RPC
+	MuxConnection  = 1
+	RPCTimeout     = 3 * time.Second
+	ConnectTimeout = 50 * time.Millisecond
+
+	// 服务名
+	GatewayServiceName = "openiot-gateway"
+	UserServiceName    = "openiot-user"
+
+	// 服务端口
+	GatewayListenAddress     = "127.0.0.1:8080"
+	UserServiceListenAddress = "127.0.0.1:8081"
+
+	// 模型表格名
+	UserTableName      = "user"
+	AuthorityTableName = "authority"
+
+	// 雪花
+	SnowflakeWorkerID     = 0
+	SnowflakeDatacenterID = 0
+
+	// Etcd
+	EtcdEndpoints = "127.0.0.1:2379"
+
 	// Limit
 	MaxConnections  = 1000
 	MaxQPS          = 100
@@ -61,9 +50,9 @@ const (
 	//MainDirectory      = "tiktok"                         // 主目录
 	//PartSize           = 100 * 1024
 	//
-	//// Page
-	//PageNum  = 1
-	//PageSize = 10
+	// Page
+	PageNum  = 1
+	PageSize = 10
 	//
 	//// ffmpeg
 	//FrameNum = 1

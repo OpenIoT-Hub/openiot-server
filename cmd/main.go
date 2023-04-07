@@ -1,7 +1,7 @@
 package main
 
-import "github.com/anxiu0101/openiot-hub/config"
+import "github.com/anxiu0101/openiot-hub/pkg/util/rand"
 
 func main() {
-	config.Setup()
+	rand.GenerateUID()
 }

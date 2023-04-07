@@ -1,6 +1,9 @@
 package model
 
 import (
+	"github.com/anxiu0101/openiot-hub/internal/user/pack"
+	"github.com/anxiu0101/openiot-hub/pkg/consts"
+	"github.com/anxiu0101/openiot-hub/pkg/errno"
 	"gorm.io/gorm"
 )
 
@@ -25,7 +28,7 @@ type (
 		OrgID  uint
 		// 组织树路径，如 "Factory1/Dept1/Group1"
 		Path     string
-		Position string
+		Position []string
 	}
 
 	// Organization 组织结构，包含了所有的结构例如公司和部门
@@ -39,3 +42,16 @@ type (
 		FatherOrgID uint
 	}
 )
+
+func GetUserInfo(userId uint) (pack.UserInfo, int) {
+	var (
+		info      pack.UserInfo
+		positions []string
+	)
+
+	db.Table(consts.UserTableName).Where("id = ?", userId).Find(&info)
+
+	db.Table(consts.AuthorityTableName).Where("user_id = ?", userId).Find(&positions)
+
+	return info, errno.Success
+}
