@@ -4,9 +4,9 @@ import (
 	"github.com/jinzhu/configor"
 )
 
-// Global Config Variable
+// Config Global configurations Variable
 var Config = struct {
-	AppMode string `default:debug`
+	AppMode string `default:"debug"`
 	AppName string `default:"openiot-hub"`
 
 	Server struct {

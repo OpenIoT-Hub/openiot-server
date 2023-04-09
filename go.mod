@@ -6,7 +6,7 @@ require (
 	github.com/cloudwego/fastpb v0.0.4
 	github.com/cloudwego/hertz v0.6.1
 	github.com/cloudwego/kitex v0.5.1
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/golang-jwt/jwt/v5 v5.0.0-rc.2
 	github.com/golang/glog v1.1.1
 	github.com/jinzhu/configor v1.2.1
 	google.golang.org/protobuf v1.30.0

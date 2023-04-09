@@ -2,10 +2,12 @@ package consts
 
 import "time"
 
+var (
+	JwtSecret = []byte("Openiot-Hub-Secret")
+)
+
 const (
 	MySQLDefaultDSN = "tiktok:tiktok@tcp(127.0.0.1:3306)/tiktok?charset=utf8mb4&parseTime=True&loc=Local"
-
-	JwtSecret = "openiot-hub-ᕙ(` ´)ᕗ"
 
 	// RPC
 	MuxConnection  = 1
