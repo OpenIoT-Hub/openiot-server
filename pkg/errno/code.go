@@ -1,7 +1,11 @@
 package errno
 
 const (
-	Success       = 200
-	Error         = 500
+	Success = 200
+
 	InvalidParams = 400
+
+	Error                       = 500
+	ErrorDatabaseQuery          = 50001
+	ErrorDatabaseRecordNotFound = 50002
 )

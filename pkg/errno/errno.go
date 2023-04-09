@@ -1,9 +1,13 @@
 package errno
 
 var MsgFlags = map[int]string{
-	Success:       "ok",
-	Error:         "fail",
+	Success: "ok",
+
 	InvalidParams: "请求参数错误",
+
+	Error:                       "fail",
+	ErrorDatabaseQuery:          "数据库查询错误",
+	ErrorDatabaseRecordNotFound: "数据库返回空值",
 }
 
 func GetMsg(code int) string {

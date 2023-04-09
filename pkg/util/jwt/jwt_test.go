@@ -12,6 +12,7 @@ func Test_tokenProcess(t *testing.T) {
 		want bool
 	}{
 		{name: "test-1", args: args{userId: 114514}, want: true},
+		{name: "test-1", args: args{userId: 1834344349}, want: true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

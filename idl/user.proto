@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package follow;
+package idl;
 
 option go_package = "openiot/user";
 

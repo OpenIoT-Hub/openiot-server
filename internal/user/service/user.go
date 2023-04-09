@@ -2,16 +2,26 @@ package service
 
 import (
 	"github.com/anxiu0101/openiot-hub/internal/user/model"
+	"github.com/anxiu0101/openiot-hub/internal/user/pack"
 	"github.com/anxiu0101/openiot-hub/pkg/errno"
-	"log"
 )
 
-func GetUserInfo(userId uint) int {
-	info, err := model.GetUserInfo(userId)
-	if err == errno.Success {
-		return errno.Success
+func GetUserInfo(userId uint) (pack.UserInfo, int) {
+	var (
+		info pack.UserInfo
+	)
+
+	user, err := model.GetUserInfoByID(userId)
+	if err != errno.Success {
+		return info, errno.Error
 	}
-	// FIXME pack object BO -> DTO
-	log.Printf("%+v\n", info)
-	return 0
+
+	positions, err := model.GetPositionsByID(userId)
+	if err != errno.Success {
+		return info, errno.Error
+	}
+
+	info = pack.BuildUserInfo(user, positions)
+
+	return info, errno.Success
 }

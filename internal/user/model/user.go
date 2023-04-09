@@ -1,7 +1,6 @@
 package model
 
 import (
-	"github.com/anxiu0101/openiot-hub/internal/user/pack"
 	"github.com/anxiu0101/openiot-hub/pkg/consts"
 	"github.com/anxiu0101/openiot-hub/pkg/errno"
 	"gorm.io/gorm"
@@ -43,15 +42,34 @@ type (
 	}
 )
 
-func GetUserInfo(userId uint) (pack.UserInfo, int) {
+func GetUserInfoByID(userId uint) (User, int) {
 	var (
-		info      pack.UserInfo
+		info User
+	)
+
+	if err := db.Table(consts.UserTableName).
+		Select("id", "name", "email", "phone_num", "avatar").
+		Where("id = ?", userId).Find(&info).Error; err == gorm.ErrRecordNotFound {
+		return info, errno.ErrorDatabaseRecordNotFound
+	} else if err != nil {
+		return info, errno.ErrorDatabaseQuery
+	}
+
+	return info, errno.Success
+}
+
+func GetPositionsByID(userId uint) ([]string, int) {
+	var (
 		positions []string
 	)
 
-	db.Table(consts.UserTableName).Where("id = ?", userId).Find(&info)
+	if err := db.Table(consts.AuthorityTableName).
+		Where("user_id = ?", userId).
+		Find(&positions).Error; err == gorm.ErrRecordNotFound {
+		return positions, errno.ErrorDatabaseRecordNotFound
+	} else if err != nil {
+		return positions, errno.ErrorDatabaseQuery
+	}
 
-	db.Table(consts.AuthorityTableName).Where("user_id = ?", userId).Find(&positions)
-
-	return info, errno.Success
+	return positions, errno.Success
 }

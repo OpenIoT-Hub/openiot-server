@@ -48,9 +48,11 @@ Furthermore, the core function of robot dog(RD in follows) scheduling need a wel
 
 ## Gateway
 
+// For each different microservice, we have similar file struct like follows,
+
 ## Microservice
 
-For each different microservice, we have similar file struct like follows, 
+对于每个不同的微服务，我们都有类似的文件结构，如下所示，
 ```shell
 user/
 ├── configs     // 微服务启动配置，包括数据库连接
