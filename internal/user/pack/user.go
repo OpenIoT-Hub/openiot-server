@@ -17,13 +17,15 @@ type (
 	}
 )
 
-func BuildUserInfo(info UserInfo, position []string) user.User {
-	return user.User{
-		Id:       info.Id,
-		Name:     info.Name,
-		Email:    info.Email,
-		PhoneNum: info.PhoneNum,
-		Avatar:   info.Avatar,
-		// Position: position,
+func BuildUserInfo(info UserInfo, position []string) user.UserInfo {
+	return user.UserInfo{
+		User: &user.User{
+			Id:       info.Id,
+			Name:     info.Name,
+			Email:    info.Email,
+			PhoneNum: info.PhoneNum,
+			Avatar:   info.Avatar,
+		},
+		Position: position,
 	}
 }

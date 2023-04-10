@@ -7,9 +7,9 @@ import (
 	"github.com/anxiu0101/openiot-hub/pkg/errno"
 )
 
-func GetUserInfo(userId uint) (api.User, int) {
+func GetUserInfo(userId uint) (api.UserInfo, int) {
 	var (
-		info      api.User
+		info      api.UserInfo
 		positions []string
 	)
 

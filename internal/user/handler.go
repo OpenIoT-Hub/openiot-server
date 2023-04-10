@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	user "github.com/anxiu0101/openiot-hub/internal/user/kitex_gen/openiot/user"
+	"github.com/anxiu0101/openiot-hub/internal/user/pack"
+	"github.com/anxiu0101/openiot-hub/internal/user/service"
 )
 
 // OpeniotUserServiceImpl implements the last service interface defined in the IDL.
@@ -19,9 +21,10 @@ func (s *OpeniotUserServiceImpl) Ping(ctx context.Context, req *user.PingReq) (r
 // GetUserInfo implements the OpeniotUserServiceImpl interface.
 func (s *OpeniotUserServiceImpl) GetUserInfo(ctx context.Context, req *user.GetUserInfoReq) (resp *user.GetUserInfoRsp, err error) {
 	resp = new(user.GetUserInfoRsp)
-	//id := req.UserId
-	//info, eCode := service.GetUserInfo(uint(id))
-	//base := pack.BuildBaseRsp(eCode)
-
+	id := req.UserId
+	info, eCode := service.GetUserInfo(uint(id))
+	base := pack.BuildBaseRsp(eCode)
+	resp.UserInfo = &info
+	resp.Base = base
 	return
 }
