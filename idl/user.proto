@@ -19,7 +19,7 @@ message User {
 
 message UserInfo {
   User user = 1;
-  repeat string position = 2; // 用户职位，从 Authority 表中读取
+  repeated string position = 2; // 用户职位，从 Authority 表中读取
 }
 
 /******************************/
