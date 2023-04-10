@@ -8,4 +8,5 @@ const (
 	Error                       = 500
 	ErrorDatabaseQuery          = 50001
 	ErrorDatabaseRecordNotFound = 50002
+	ErrorUserNotExist           = 50003
 )

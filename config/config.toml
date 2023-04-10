@@ -10,6 +10,14 @@ Port = 3306
 Type = 'mysql'
 User = 'openiot'
 
+[OSS]
+EndPoint = 'http://oss-cn-hangzhou.aliyuncs.com'
+AccessKeyId = ''
+AccessKeySecret = ''
+BucketName = ''
+MainDirecotory = 3
+PartSize = 102400
+
 [RabbitMQ]
 RabbitMQ = 'amqp'
 RabbitMQHost = 'localhost'

@@ -1,6 +1,7 @@
 package model
 
 import (
+	"github.com/anxiu0101/openiot-hub/internal/user/pack"
 	"github.com/anxiu0101/openiot-hub/pkg/consts"
 	"github.com/anxiu0101/openiot-hub/pkg/errno"
 	"gorm.io/gorm"
@@ -42,14 +43,24 @@ type (
 	}
 )
 
-func GetUserInfoByID(userId uint) (User, int) {
+// CheckUserByID 通过 UserID 查询用户是否存在
+func CheckUserByID(userId uint) bool {
 	var (
-		info User
+		count int64
+	)
+
+	db.Table(consts.UserTableName).Where("id = ?", userId).Count(&count)
+	return count > 0
+}
+
+func GetUserInfoByID(userId uint) (pack.UserInfo, int) {
+	var (
+		info pack.UserInfo
 	)
 
 	if err := db.Table(consts.UserTableName).
-		Select("id", "name", "email", "phone_num", "avatar").
-		Where("id = ?", userId).Find(&info).Error; err == gorm.ErrRecordNotFound {
+		Where("id = ?", userId).
+		Find(&info).Error; err == gorm.ErrRecordNotFound {
 		return info, errno.ErrorDatabaseRecordNotFound
 	} else if err != nil {
 		return info, errno.ErrorDatabaseQuery

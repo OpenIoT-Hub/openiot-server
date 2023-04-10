@@ -8,7 +8,7 @@ import (
 	"github.com/cloudwego/kitex/server"
 	"github.com/golang/glog"
 
-	"github.com/anxiu0101/openiot-hub/internal/user/config"
+	"github.com/anxiu0101/openiot-hub/config"
 	user "github.com/anxiu0101/openiot-hub/internal/user/kitex_gen/openiot/user/openiotuserservice"
 	"github.com/anxiu0101/openiot-hub/internal/user/model"
 	"github.com/anxiu0101/openiot-hub/pkg/consts"

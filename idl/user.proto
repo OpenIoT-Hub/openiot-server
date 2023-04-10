@@ -15,7 +15,11 @@ message User {
   string email = 3; // 用户工作邮箱
   string phone_num = 4; // 用户手机号码
   string avatar = 5; // 用户头像地址
-  string position = 6; // 用户职位，从 Authority 表中读取
+}
+
+message UserInfo {
+  User user = 1;
+  repeat string position = 2; // 用户职位，从 Authority 表中读取
 }
 
 /******************************/
@@ -35,5 +39,5 @@ message BaseRsp {
 }
 message GetUserInfoRsp {
   BaseRsp base = 1;
-  User user_info = 2;
+  UserInfo user_info = 2;
 }

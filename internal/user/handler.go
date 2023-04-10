@@ -19,6 +19,9 @@ func (s *OpeniotUserServiceImpl) Ping(ctx context.Context, req *user.PingReq) (r
 // GetUserInfo implements the OpeniotUserServiceImpl interface.
 func (s *OpeniotUserServiceImpl) GetUserInfo(ctx context.Context, req *user.GetUserInfoReq) (resp *user.GetUserInfoRsp, err error) {
 	resp = new(user.GetUserInfoRsp)
+	//id := req.UserId
+	//info, eCode := service.GetUserInfo(uint(id))
+	//base := pack.BuildBaseRsp(eCode)
 
 	return
 }

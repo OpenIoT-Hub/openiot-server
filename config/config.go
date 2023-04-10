@@ -46,6 +46,15 @@ var Config = struct {
 	}
 
 	SMS struct{}
+
+	OSS struct {
+		EndPoint        string
+		AccessKeyId     string
+		AccessKeySecret string
+		BucketName      string
+		MainDirecotory  int
+		PartSize        int
+	}
 }{}
 
 func Setup() {
