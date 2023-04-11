@@ -11,11 +11,10 @@ type ErrResponse struct {
 	Msg  string `json:"status_msg"`
 }
 
-func SendErrorResponse(c *app.RequestContext, err error) {
-	errno := errno.ConvertErr(err)
+func SendErrorResponse(c *app.RequestContext, statusCode int64) {
 	c.JSON(consts.StatusOK, ErrResponse{
-		Code: errno.ErrorCode,
-		Msg:  errno.ErrorMsg,
+		Code: statusCode,
+		Msg:  errno.GetMsg(int(statusCode)),
 	})
 }
 
