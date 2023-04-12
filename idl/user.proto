@@ -8,7 +8,9 @@ import "api/api.proto";
 
 service OpeniotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
-  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp);
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){
+    option (api.get) = "/api/v1/user/info";
+  };
 }
 
 message User {
@@ -27,10 +29,10 @@ message UserInfo {
 /******************************/
 /** Request Collection, Req **/
 message PingReq {
-  string message = 1;
+  string message = 1[(api.query)="message"];
 }
 message GetUserInfoReq {
-  uint64 user_id = 1;
+  uint64 user_id = 1[(api.query)="user_id"];
 }
 
 /******************************/
