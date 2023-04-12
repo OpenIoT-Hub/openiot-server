@@ -10,7 +10,7 @@ import (
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 )
 
-// GetUserInfo .
+// GetUserInfo 通过用户 ID 获取用户资料.
 // @router /api/v1/user/info [GET]
 func GetUserInfo(ctx context.Context, c *app.RequestContext) {
 	var err error

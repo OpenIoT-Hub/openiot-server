@@ -5,6 +5,7 @@ import (
 	"github.com/anxiu0101/openiot-hub/pkg/consts"
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/retry"
+	"github.com/golang/glog"
 	etcd "github.com/kitex-contrib/registry-etcd"
 	trace "github.com/kitex-contrib/tracer-opentracing"
 )
@@ -21,6 +22,7 @@ func initUserRpc() {
 	r, err := etcd.NewEtcdResolver([]string{consts.EtcdEndpoints})
 
 	if err != nil {
+		glog.Fatal(err)
 		panic(err)
 	}
 
@@ -35,6 +37,7 @@ func initUserRpc() {
 	)
 
 	if err != nil {
+		glog.Fatal(err)
 		panic(err)
 	}
 

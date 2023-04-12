@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package idl;
+
+option go_package = "openiot/device";
+
+import "api/api.proto";
+import "api/common.proto"
+
+service OpeniotDeviceService {
+    rpc Ping(PingReq) returns (BaseRsp) {}
+}
+
+message Device {
+    uint64 id = 1;
+    string name = 2;
+}
+
+message PingReq {
+    string message = 1;
+}
+

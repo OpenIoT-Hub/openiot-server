@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package idl;
+
+option go_package = "openiot/api";
+
+message BaseRsp {
+  int64 status_code = 1; // 状态码，0-成功，其他值-失败
+  string status_msg = 2; // 返回状态描述
+}

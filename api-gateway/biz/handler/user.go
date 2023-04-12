@@ -62,9 +62,3 @@ func UserLogin(ctx context.Context, c *app.RequestContext) {
 	//	Token:      token,
 	//})
 }
-
-// GetUserInfo
-// @router /api/v1/:uid [GET]
-func GetUserInfo() {
-
-}
