@@ -5,7 +5,7 @@ package openiotuserservice
 import (
 	"context"
 	"fmt"
-	user "github.com/anxiu0101/openiot-hub/internal/user/kitex_gen/openiot/user"
+	"github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
 	streaming "github.com/cloudwego/kitex/pkg/streaming"

@@ -4,14 +4,24 @@ package main
 
 import (
 	"context"
-
+	"flag"
+	"github.com/anxiu0101/openiot-hub/api-gateway/biz/rpc"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/cloudwego/hertz/pkg/common/utils"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"github.com/golang/glog"
 )
 
+func init() {
+	rpc.Setup()
+}
+
 func main() {
+	flag.Parse()
+	// write log file into dir before program exists.
+	defer glog.Flush()
+
 	h := server.Default()
 
 	h.GET("/ping", func(c context.Context, ctx *app.RequestContext) {

@@ -4,7 +4,7 @@ package openiotuserservice
 
 import (
 	"context"
-	user "github.com/anxiu0101/openiot-hub/internal/user/kitex_gen/openiot/user"
+	"github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
 )

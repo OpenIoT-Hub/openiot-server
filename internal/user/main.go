@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	user "github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user/openiotuserservice"
 	"net"
 
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
@@ -9,7 +10,6 @@ import (
 	"github.com/golang/glog"
 
 	"github.com/anxiu0101/openiot-hub/config"
-	user "github.com/anxiu0101/openiot-hub/internal/user/kitex_gen/openiot/user/openiotuserservice"
 	"github.com/anxiu0101/openiot-hub/internal/user/model"
 	"github.com/anxiu0101/openiot-hub/pkg/consts"
 )

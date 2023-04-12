@@ -1,9 +1,9 @@
 package service
 
 import (
-	api "github.com/anxiu0101/openiot-hub/internal/user/kitex_gen/openiot/user"
 	"github.com/anxiu0101/openiot-hub/internal/user/model"
 	"github.com/anxiu0101/openiot-hub/internal/user/pack"
+	api "github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
 	"github.com/anxiu0101/openiot-hub/pkg/errno"
 )
 

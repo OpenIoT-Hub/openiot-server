@@ -4,6 +4,8 @@ package idl;
 
 option go_package = "openiot/user";
 
+import "api.proto";
+
 service OpeniotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp);
