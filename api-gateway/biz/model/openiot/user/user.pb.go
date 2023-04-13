@@ -7,7 +7,7 @@
 package user
 
 import (
-	_ "github.com/anxiu0101/openiot-hub/api-gateway/biz/model/openiot/api"
+	_ "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/api"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

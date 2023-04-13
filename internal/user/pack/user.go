@@ -1,7 +1,7 @@
 package pack
 
 import (
-	"github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
 )
 
 type (

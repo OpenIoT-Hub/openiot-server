@@ -2,7 +2,7 @@
 generate:
 	kitex \
 	-service "openiot-user" \
-	-module "github.com/anxiu0101/openiot-hub" \
+	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
 	-I ./../../idl/ user.proto \
 	&& go mod tidy
@@ -17,4 +17,4 @@ run_server:
 
 # Service: user
 # Path: internal/user
-# Optional: -use "github.com/anxiu0101/openiot-hub/kitex_gen"
+# Optional: -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen"

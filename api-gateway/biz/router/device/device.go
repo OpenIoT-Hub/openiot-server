@@ -3,7 +3,7 @@
 package device
 
 import (
-	device "github.com/anxiu0101/openiot-hub/api-gateway/biz/handler/device"
+	device "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/handler/device"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 

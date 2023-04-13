@@ -3,7 +3,7 @@
 package user
 
 import (
-	user "github.com/anxiu0101/openiot-hub/api-gateway/biz/handler/user"
+	user "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/handler/user"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 

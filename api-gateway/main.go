@@ -5,7 +5,7 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/anxiu0101/openiot-hub/api-gateway/biz/rpc"
+	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/rpc"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/cloudwego/hertz/pkg/common/utils"

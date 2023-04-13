@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/anxiu0101/openiot-hub/pkg/consts"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
 	"log"
 
 	"gorm.io/driver/mysql"

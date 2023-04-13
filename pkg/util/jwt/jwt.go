@@ -2,7 +2,7 @@ package jwt
 
 import (
 	"fmt"
-	"github.com/anxiu0101/openiot-hub/pkg/consts"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
 	"github.com/golang-jwt/jwt/v5"
 	"time"
 )

@@ -1,8 +1,8 @@
 package rpc
 
 import (
-	"github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user/openiotuserservice"
-	"github.com/anxiu0101/openiot-hub/pkg/consts"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user/openiotuserservice"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/retry"
 	"github.com/golang/glog"

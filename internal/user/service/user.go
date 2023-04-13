@@ -1,10 +1,10 @@
 package service
 
 import (
-	"github.com/anxiu0101/openiot-hub/internal/user/model"
-	"github.com/anxiu0101/openiot-hub/internal/user/pack"
-	api "github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
-	"github.com/anxiu0101/openiot-hub/pkg/errno"
+	"github.com/OpenIoT-Hub/openiot-server/internal/user/model"
+	"github.com/OpenIoT-Hub/openiot-server/internal/user/pack"
+	api "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/errno"
 )
 
 func GetUserInfo(userId uint) (api.UserInfo, int) {

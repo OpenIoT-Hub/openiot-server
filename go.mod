@@ -1,4 +1,4 @@
-module github.com/anxiu0101/openiot-hub
+module github.com/OpenIoT-Hub/openiot-server
 
 go 1.20
 
@@ -10,6 +10,8 @@ require (
 	github.com/golang-jwt/jwt/v5 v5.0.0-rc.2
 	github.com/golang/glog v1.1.1
 	github.com/jinzhu/configor v1.2.1
+	github.com/kitex-contrib/registry-etcd v0.1.0
+	github.com/kitex-contrib/tracer-opentracing v0.0.3
 	google.golang.org/protobuf v1.30.0
 	gorm.io/driver/mysql v1.4.7
 	gorm.io/gorm v1.24.6
@@ -42,8 +44,6 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/kitex-contrib/registry-etcd v0.1.0 // indirect
-	github.com/kitex-contrib/tracer-opentracing v0.0.3 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.4 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect

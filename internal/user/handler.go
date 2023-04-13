@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"github.com/anxiu0101/openiot-hub/internal/user/pack"
-	"github.com/anxiu0101/openiot-hub/internal/user/service"
-	"github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
+	"github.com/OpenIoT-Hub/openiot-server/internal/user/pack"
+	"github.com/OpenIoT-Hub/openiot-server/internal/user/service"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
 )
 
 // OpeniotUserServiceImpl implements the last service interface defined in the IDL.

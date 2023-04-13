@@ -3,7 +3,7 @@
 package openiotuserservice
 
 import (
-	"github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
 	server "github.com/cloudwego/kitex/server"
 )
 

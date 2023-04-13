@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/anxiu0101/openiot-hub/pkg/util/jwt"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/util/jwt"
 )
 
 func main() {

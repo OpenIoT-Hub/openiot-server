@@ -3,8 +3,8 @@
 package router
 
 import (
-	device "github.com/anxiu0101/openiot-hub/api-gateway/biz/router/device"
-	user "github.com/anxiu0101/openiot-hub/api-gateway/biz/router/user"
+	device "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/router/device"
+	user "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/router/user"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 

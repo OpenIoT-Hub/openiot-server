@@ -2,16 +2,16 @@ package main
 
 import (
 	"flag"
-	user "github.com/anxiu0101/openiot-hub/kitex_gen/openiot/user/openiotuserservice"
+	user "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user/openiotuserservice"
 	"net"
 
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/server"
 	"github.com/golang/glog"
 
-	"github.com/anxiu0101/openiot-hub/config"
-	"github.com/anxiu0101/openiot-hub/internal/user/model"
-	"github.com/anxiu0101/openiot-hub/pkg/consts"
+	"github.com/OpenIoT-Hub/openiot-server/config"
+	"github.com/OpenIoT-Hub/openiot-server/internal/user/model"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
 )
 
 func init() {

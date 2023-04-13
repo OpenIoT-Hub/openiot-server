@@ -1,9 +1,9 @@
 package model
 
 import (
-	"github.com/anxiu0101/openiot-hub/internal/user/pack"
-	"github.com/anxiu0101/openiot-hub/pkg/consts"
-	"github.com/anxiu0101/openiot-hub/pkg/errno"
+	"github.com/OpenIoT-Hub/openiot-server/internal/user/pack"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/errno"
 	"gorm.io/gorm"
 )
 
