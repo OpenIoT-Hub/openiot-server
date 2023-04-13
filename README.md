@@ -97,6 +97,10 @@ user/
 └── Makefile    // 常用指令
 ```
 
+## 服务介绍
+
+本项目主要设计了四个模块，包括 User，Auth，Device，Gateway，分别负责管理系统的用户，鉴权，设备监控，网关。你可以在[这里](./internal/MicroServiceInfo.md)看到他们的进一步具体信息。
+
 ## 贡献指南
 
 欢迎您为 openiot-server 项目作出贡献！您可以通过以下方式参与项目：
@@ -105,7 +109,6 @@ user/
 
 - 编写和改进代码，提交 Pull Request。
 
-## 许可证
+## 开源许可证
 
-该项目基于 [MIT](https://github.com/your_username/openiot-server/blob/main/LICENSE-MIT) 开源协议发布。
-
+这个项目使用 [Apache 2.0 开源许可证](https://www.apache.org/licenses/LICENSE-2.0)，详情请参阅 [LICENSE](LICENSE) 文件。
