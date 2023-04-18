@@ -58,4 +58,7 @@ const (
 	//
 	//// ffmpeg
 	//FrameNum = 1
+
+	// Security
+	PassWordCost = 12 // 密码加密强度
 )

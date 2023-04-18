@@ -20,6 +20,12 @@ type (
 		Avatar   string
 	}
 
+	// Stuff 接口，封装部分用户功能，包括密码加密等。
+	// TODO 完成 Stuff 接口的设计
+	Stuff interface {
+		GetHashPwdByID() // 获取数据库中的密码哈希值
+	}
+
 	// Authority 中间表，运行时缓存到 redis
 	// 多对多：一个人可以对应多个职位，多个人对应同一个部门
 	Authority struct {
