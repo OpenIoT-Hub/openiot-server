@@ -7,7 +7,9 @@ var (
 )
 
 const (
+	// Database Address
 	MySQLDefaultDSN = "openiot:openiot@tcp(127.0.0.1:3306)/openiot?charset=utf8mb4&parseTime=True&loc=Local"
+	VercelCloudDSN  = "9hfx345yeipdqgo7o6ri:pscale_pw_IQjkJtFDkz9zqiMkRSlqLlJDNL02o0hRGfPFRkznojK@tcp(aws.connect.psdb.cloud)/openiot-database-test?tls=true"
 
 	// RPC
 	MuxConnection  = 1
