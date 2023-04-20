@@ -9,14 +9,68 @@ import "api/common.proto";
 
 service OpeniotDeviceService {
     rpc Ping(PingReq) returns (BaseRsp) {}
+    rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {
+        option (api.post) = "/api/v1/device";
+    }
+    // TODO router parameter add
+    rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {
+        option (api.delete) = "api/v1/device/";
+    }
 }
 
 message Device {
-    uint64 id = 1;
-    string name = 2;
+    uint64 ID = 1;
+    int64 UpdatedAt = 2;
+    double Longitude = 3;
+    double Latitude = 4;
+    double Capacity = 5;
+    double Temperature = 6;
+    double Humidity = 7;
+    double CO2_CONC = 8;
+    double SoundIntensity = 9;
+    int64 State = 10;
+    string Info = 11;
 }
 
 message PingReq {
     string message = 1;
 }
 
+/******************************/
+/** Request Collection, Req **/
+/******************************/
+message CreateDeviceReq {
+
+}
+message RemoveDeviceReq {
+
+}
+
+message UpdateDeviceReq {
+
+}
+message GetDeviceReq {
+
+}
+message ListDeviceReq {
+
+}
+
+/******************************/
+/** Response Collection, Rsp **/
+/******************************/
+message CreateDeviceRsp {
+
+}
+message RemoveDeviceRsp {
+    BaseRsp base = 1;
+}
+message UpdateDeviceRsp {
+
+}
+message GetDeviceRsp {
+
+}
+message ListDeviceRsp {
+
+}

@@ -19,12 +19,14 @@ const (
 	UserServiceName    = "openiot-user"
 
 	// 服务端口
-	GatewayListenAddress     = "127.0.0.1:8080"
-	UserServiceListenAddress = "127.0.0.1:8081"
+	GatewayListenAddress       = "127.0.0.1:8080"
+	UserServiceListenAddress   = "127.0.0.1:8081"
+	DeviceServiceListenAddress = "127.0.0.1:8082"
 
 	// 模型表格名
 	UserTableName      = "user"
 	AuthorityTableName = "authority"
+	DeviceTableName    = "device"
 
 	// 雪花
 	SnowflakeWorkerID     = 0
@@ -61,4 +63,5 @@ const (
 
 	// Security
 	PassWordCost = 12 // 密码加密强度
+	Salt         = "OpenIoT-Hub"
 )
