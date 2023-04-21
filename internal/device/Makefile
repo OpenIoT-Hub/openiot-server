@@ -2,7 +2,7 @@
 generate:
 	kitex \
 	-service "openiot-device" \
-	-module "github.com/OpenIoT-Hub/openiot-device" \
+	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
 	-I ./../../idl/ device.proto \
 	&& go mod tidy
