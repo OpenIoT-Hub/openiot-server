@@ -5,6 +5,7 @@ package device
 import (
 	fmt "fmt"
 	api "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/api"
+	api2 "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/api"
 	fastpb "github.com/cloudwego/fastpb"
 )
 
@@ -509,7 +510,7 @@ ReadFieldError:
 }
 
 func (x *CreateDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v api.BaseRsp
+	var v api2.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -539,7 +540,7 @@ ReadFieldError:
 }
 
 func (x *RemoveDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v api.BaseRsp
+	var v api2.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -569,7 +570,7 @@ ReadFieldError:
 }
 
 func (x *UpdateDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v api.BaseRsp
+	var v api2.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -604,7 +605,7 @@ ReadFieldError:
 }
 
 func (x *GetDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v api.BaseRsp
+	var v api2.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -649,7 +650,7 @@ ReadFieldError:
 }
 
 func (x *ListDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v api.BaseRsp
+	var v api2.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err

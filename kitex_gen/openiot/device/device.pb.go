@@ -8,7 +8,7 @@ package device
 
 import (
 	context "context"
-	api "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/api"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/api"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

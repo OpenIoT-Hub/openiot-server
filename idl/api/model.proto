@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "/api";
+
+message BaseRsp {
+  int64 status_code = 1; // 状态码，0-成功，其他值-失败
+  string status_msg = 2; // 返回状态描述
+}
+
+message User {
+  uint64 id = 1; // 用户id
+  string name = 2; // 用户名称
+  string email = 3; // 用户工作邮箱
+  string phone_num = 4; // 用户手机号码
+  string avatar = 5; // 用户头像地址
+}
+message UserInfo {
+  User user = 1;
+  repeated string position = 2; // 用户职位，从 Authority 表中读取
+}
+
+message DeviceV1 {
+  uint64 ID = 1;
+  int64 UpdatedAt = 2;
+  double Longitude = 3;
+  double Latitude = 4;
+  double Capacity = 5;
+  double Temperature = 6;
+  double Humidity = 7;
+  double CO2_CONC = 8;
+  double SoundIntensity = 9;
+  int64 State = 10;
+  string Info = 11;
+}
+message Device {
+  uint64 ID = 1;
+  int64 UpdatedAt = 2;
+  double Longitude = 3;
+  double Latitude = 4;
+  int64 version = 5;
+  int64 state = 6;
+  string comment = 7;
+  string external = 8;
+}

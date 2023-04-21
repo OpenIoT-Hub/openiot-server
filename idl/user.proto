@@ -4,14 +4,11 @@ package idl;
 
 option go_package = "openiot/user";
 
-import "api/api.proto";
-import "api/common.proto";
+import "base.proto";
 
 service OpeniotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
-  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){
-    option (api.get) = "/api/v1/user/info";
-  };
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){}
 }
 
 message User {
@@ -30,10 +27,10 @@ message UserInfo {
 /******************************/
 /** Request Collection, Req **/
 message PingReq {
-  string message = 1[(api.query)="message"];
+  string message = 1;
 }
 message GetUserInfoReq {
-  uint64 user_id = 1[(api.query)="user_id"];
+  uint64 user_id = 1;
 }
 
 /******************************/

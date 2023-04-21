@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "openiot/api/message";
+
+import "api/api.proto";
+import "api/model.proto";
+
+/******************************/
+/** Request Collection, Req **/
+/******************************/
+message PingReq {
+  string message = 1;
+}
+message CreateDeviceReq {
+  double Longitude = 1[(api.form)="longitude"];
+  double Latitude = 2[(api.form)="latitude"];;
+  int64 version = 3[(api.form)="version"];;
+  int64 state = 4[(api.form)="state"];;
+  string comment = 5[(api.form)="comment"];;
+  string external = 6[(api.form)="external"];;
+}
+message RemoveDeviceReq {
+  string id = 1[(api.path)="id"];
+}
+message UpdateDeviceReq {
+  optional string id = 1[(api.path)="id"];
+  optional double Longitude = 2[(api.form)="longitude"];
+  optional double Latitude = 3[(api.form)="latitude"];;
+  optional int64 version = 4[(api.form)="version"];;
+  optional int64 state = 5[(api.form)="state"];;
+  optional string comment = 6[(api.form)="comment"];;
+  optional string external = 7[(api.form)="external"];;
+}
+message GetDeviceReq {
+  string id = 1[(api.path)="id"];
+}
+message ListDeviceReq {
+
+}
+
+/******************************/
+/** Response Collection, Rsp **/
+/******************************/
+message CreateDeviceRsp {
+  BaseRsp base = 1;
+}
+message RemoveDeviceRsp {
+  BaseRsp base = 1;
+}
+message UpdateDeviceRsp {
+  BaseRsp base = 1;
+}
+message GetDeviceRsp {
+  BaseRsp base = 1;
+  Device device = 2;
+}
+message ListDeviceRsp {
+  BaseRsp base = 1;
+  repeated Device device = 2;
+}

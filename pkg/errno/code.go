@@ -1,12 +1,14 @@
 package errno
 
+// FIXME fix the error -> errno
 const (
 	Success = 200
 
 	InvalidParams = 400
 
 	Error                       = 500
-	ErrorDatabaseQuery          = 50001
+	ErrorDatabaseOperate        = 50001
 	ErrorDatabaseRecordNotFound = 50002
 	ErrorUserNotExist           = 50003
+	ErrorDeviceNotExist         = 50004
 )

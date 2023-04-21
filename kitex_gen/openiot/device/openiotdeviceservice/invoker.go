@@ -3,7 +3,7 @@
 package openiotdeviceservice
 
 import (
-	device "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/device"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/device"
 	server "github.com/cloudwego/kitex/server"
 )
 

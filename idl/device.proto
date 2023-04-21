@@ -4,26 +4,15 @@ package idl;
 
 option go_package = "openiot/device";
 
-import "api/api.proto";
-import "api/common.proto";
+import "base.proto";
 
 service OpeniotDeviceService {
     rpc Ping(PingReq) returns (BaseRsp) {}
-    rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {
-        option (api.post) = "/api/v1/device";
-    }
-    rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {
-        option (api.delete) = "api/v1/device/:id";
-    }
-    rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {
-        option (api.post) = "api/v1/device/:id";
-    }
-    rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {
-        option (api.get) = "api/v1/device/:id";
-    }
-    rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {
-        option (api.get) = "api/v1/device/:id";
-    }
+    rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {}
+    rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {}
+    rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {}
+    rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {}
+    rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {}
 }
 
 message DeviceV1 {
@@ -57,27 +46,27 @@ message PingReq {
     string message = 1;
 }
 message CreateDeviceReq {
-    double Longitude = 1[(api.form)="longitude"];
-    double Latitude = 2[(api.form)="latitude"];;
-    int64 version = 3[(api.form)="version"];;
-    int64 state = 4[(api.form)="state"];;
-    string comment = 5[(api.form)="comment"];;
-    string external = 6[(api.form)="external"];;
+    double Longitude = 1;
+    double Latitude = 2;
+    int64 version = 3;
+    int64 state = 4;
+    string comment = 5;
+    string external = 6;
 }
 message RemoveDeviceReq {
-    string id = 1[(api.path)="id"];
+    string id = 1;
 }
 message UpdateDeviceReq {
-    optional string id = 1[(api.path)="id"];
-    optional double Longitude = 2[(api.form)="longitude"];
-    optional double Latitude = 3[(api.form)="latitude"];;
-    optional int64 version = 4[(api.form)="version"];;
-    optional int64 state = 5[(api.form)="state"];;
-    optional string comment = 6[(api.form)="comment"];;
-    optional string external = 7[(api.form)="external"];;
+    optional string id = 1;
+    optional double Longitude = 2;
+    optional double Latitude = 3;
+    optional int64 version = 4;
+    optional int64 state = 5;
+    optional string comment = 6;
+    optional string external = 7;
 }
 message GetDeviceReq {
-    string id = 1[(api.path)="id"];
+    string id = 1;
 }
 message ListDeviceReq {
 

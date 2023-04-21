@@ -2,100 +2,36 @@ syntax = "proto3";
 
 package api;
 
-option go_package = "/api";
+option go_package = "openiot/api";
 
 import "api/api.proto";
-import "api/message/basic.proto";
-import "idl/api/message/interactive.proto";
-import "idl/api/message/social.proto";
+import "api/model.proto";
+import "api/message/device.proto";
+import "api/message/user.proto";
 
-// 基础接口
-service Basic {
-    // 用户注册
-    rpc UserRegister (UserRegisterRequest) returns (UserRegisterResponse) {
-        option (api.post) = "/douyin/user/register";
-    }
-
-    // 用户登录
-    rpc UserLogin (UserLoginRequest) returns (UserLoginResponse) {
-        option (api.post) = "/douyin/user/login";
-    }
-
-    // 用户信息
-    rpc UserGetInfo (UserRequest) returns (UserResponse) {
-        option (api.get) = "/douyin/user";
-    }
-
-    // 视频流接口
-    rpc VideoGetFeeds (FeedRequest) returns (FeedResponse) {
-        option (api.get) = "/douyin/feed";
-    }
-
-    // 视频投稿
-    rpc VideoPublishAction (PublishActionRequest) returns (PublishActionResponse) {
-        option (api.post) = "/douyin/publish/action";
-    }
-
-    // 发布列表
-    rpc VideoPublishList (PublishListRequest) returns (PublishListResponse) {
-        option (api.get) = "/douyin/publish/list";
-    }
-
-    // 获取Token
+// 用户接口
+service OpeniotUserService {
+    rpc Ping(PingReq) returns (BaseRsp){};
+    rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){
+        option (api.get) = "/api/v1/user/info";
+    };
 }
-
-// 交互接口
-service Interactive {
-    // 赞操作
-    rpc FavoriteAction (FavoriteActionRequest) returns (FavoriteActionResponse) {
-        option (api.post) = "/douyin/favorite/action";
+// 设备接口
+service OpeniotDeviceService {
+    rpc Ping(PingReq) returns (BaseRsp) {}
+    rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {
+        option (api.post) = "/api/v1/device";
     }
-
-    // 赞列表
-    rpc FavoriteList (FavoriteListRequest) returns (FavoriteListResponse) {
-        option (api.get) = "/douyin/favorite/list";
+    rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {
+        option (api.delete) = "api/v1/device/:id";
     }
-
-    // 评论
-    rpc CommentAction (CommentActionRequest) returns (CommentActionResponse) {
-        option (api.post) = "/douyin/comment/action";
+    rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {
+        option (api.post) = "api/v1/device/:id";
     }
-
-    // 评论列表
-    rpc CommentList (CommentListRequest) returns (CommentListResponse) {
-        option (api.get) = "/douyin/comment/list";
+    rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {
+        option (api.get) = "api/v1/device/:id";
     }
-}
-
-// 社交接口
-service Social {
-    // 关系操作
-    rpc RelationAction (RelationActionRequest) returns (RelationActionResponse) {
-        option (api.post) = "/douyin/relation/action";
-    }
-
-    // 关注列表
-    rpc RelationFollowList (RelationFollowListRequest) returns (RelationFollowListResponse) {
-        option (api.get) = "/douyin/relation/follow/list";
-    }
-
-    // 粉丝列表
-    rpc RelationFollowerList (RelationFollowListRequest) returns (RelationFollowListResponse) {
-        option (api.get) = "/douyin/relation/follower/list";
-    }
-
-    // 好友列表
-    rpc RleationFriendList (RelationFriendListRequest) returns (RelationFriendListResponse) {
-        option (api.get) = "/douyin/relation/friend/list";
-    }
-
-    // 发送消息
-    rpc MessageSend (MessageSendRequest) returns (MessageSendResponse) {
-        option (api.post) = "/douyin/message/action";
-    }
-
-    // 聊天记录
-    rpc MessageChatMsg (MessageChatMsgRequest) returns (MessageChatMsgResponse) {
-        option (api.get) = "/douyin/message/chat";
+    rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {
+        option (api.get) = "api/v1/device/:id";
     }
 }
