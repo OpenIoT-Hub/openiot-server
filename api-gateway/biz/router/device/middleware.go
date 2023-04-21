@@ -10,3 +10,38 @@ func rootMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _apiMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _v1Mw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _deviceMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _removedeviceMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _updatedeviceMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _getdeviceMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _listdeviceMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
