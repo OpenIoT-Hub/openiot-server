@@ -18,10 +18,10 @@ service OpeniotDeviceService {
     rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {
         option (api.post) = "api/v1/device/:id";
     }
-    rpc GetDeviceReq(GetDeviceReq) returns (GetDeviceRsp) {
+    rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {
         option (api.get) = "api/v1/device/:id";
     }
-    rpc ListDeviceReq(UpdateDeviceReq) returns (ListDeviceRsp) {
+    rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {
         option (api.get) = "api/v1/device/:id";
     }
 }
