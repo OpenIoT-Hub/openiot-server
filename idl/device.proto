@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package idl;
 
-option go_package = "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/device";
+option go_package = "openiot/device";
 
 service OpeniotDeviceService {
     rpc Ping(PingReq) returns (BaseRsp) {}
