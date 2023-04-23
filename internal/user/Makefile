@@ -4,7 +4,7 @@ generate:
 	-service "openiot-user" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	--proto_path=./../../idl/ \
+	-use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" \
 	-I ./../../idl/ base.proto \
 
 .PHONY: run_client
