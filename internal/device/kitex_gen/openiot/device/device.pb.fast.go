@@ -4,7 +4,6 @@ package device
 
 import (
 	fmt "fmt"
-	common "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/common"
 	fastpb "github.com/cloudwego/fastpb"
 )
 
@@ -230,6 +229,41 @@ func (x *Device) fastReadField7(buf []byte, _type int8) (offset int, err error) 
 
 func (x *Device) fastReadField8(buf []byte, _type int8) (offset int, err error) {
 	x.External, offset, err = fastpb.ReadString(buf, _type)
+	return offset, err
+}
+
+func (x *BaseRsp) FastRead(buf []byte, _type int8, number int32) (offset int, err error) {
+	switch number {
+	case 1:
+		offset, err = x.fastReadField1(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
+	case 2:
+		offset, err = x.fastReadField2(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
+	default:
+		offset, err = fastpb.Skip(buf, _type, number)
+		if err != nil {
+			goto SkipFieldError
+		}
+	}
+	return offset, nil
+SkipFieldError:
+	return offset, fmt.Errorf("%T cannot parse invalid wire-format data, error: %s", x, err)
+ReadFieldError:
+	return offset, fmt.Errorf("%T read field %d '%s' error: %s", x, number, fieldIDToName_BaseRsp[number], err)
+}
+
+func (x *BaseRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
+	x.StatusCode, offset, err = fastpb.ReadInt64(buf, _type)
+	return offset, err
+}
+
+func (x *BaseRsp) fastReadField2(buf []byte, _type int8) (offset int, err error) {
+	x.StatusMsg, offset, err = fastpb.ReadString(buf, _type)
 	return offset, err
 }
 
@@ -509,7 +543,7 @@ ReadFieldError:
 }
 
 func (x *CreateDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v common.BaseRsp
+	var v BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -539,7 +573,7 @@ ReadFieldError:
 }
 
 func (x *RemoveDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v common.BaseRsp
+	var v BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -569,7 +603,7 @@ ReadFieldError:
 }
 
 func (x *UpdateDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v common.BaseRsp
+	var v BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -604,7 +638,7 @@ ReadFieldError:
 }
 
 func (x *GetDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v common.BaseRsp
+	var v BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -649,7 +683,7 @@ ReadFieldError:
 }
 
 func (x *ListDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v common.BaseRsp
+	var v BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -850,6 +884,31 @@ func (x *Device) fastWriteField8(buf []byte) (offset int) {
 		return offset
 	}
 	offset += fastpb.WriteString(buf[offset:], 8, x.External)
+	return offset
+}
+
+func (x *BaseRsp) FastWrite(buf []byte) (offset int) {
+	if x == nil {
+		return offset
+	}
+	offset += x.fastWriteField1(buf[offset:])
+	offset += x.fastWriteField2(buf[offset:])
+	return offset
+}
+
+func (x *BaseRsp) fastWriteField1(buf []byte) (offset int) {
+	if x.StatusCode == 0 {
+		return offset
+	}
+	offset += fastpb.WriteInt64(buf[offset:], 1, x.StatusCode)
+	return offset
+}
+
+func (x *BaseRsp) fastWriteField2(buf []byte) (offset int) {
+	if x.StatusMsg == "" {
+		return offset
+	}
+	offset += fastpb.WriteString(buf[offset:], 2, x.StatusMsg)
 	return offset
 }
 
@@ -1324,6 +1383,31 @@ func (x *Device) sizeField8() (n int) {
 	return n
 }
 
+func (x *BaseRsp) Size() (n int) {
+	if x == nil {
+		return n
+	}
+	n += x.sizeField1()
+	n += x.sizeField2()
+	return n
+}
+
+func (x *BaseRsp) sizeField1() (n int) {
+	if x.StatusCode == 0 {
+		return n
+	}
+	n += fastpb.SizeInt64(1, x.StatusCode)
+	return n
+}
+
+func (x *BaseRsp) sizeField2() (n int) {
+	if x.StatusMsg == "" {
+		return n
+	}
+	n += fastpb.SizeString(2, x.StatusMsg)
+	return n
+}
+
 func (x *PingReq) Size() (n int) {
 	if x == nil {
 		return n
@@ -1635,6 +1719,11 @@ var fieldIDToName_Device = map[int32]string{
 	8: "External",
 }
 
+var fieldIDToName_BaseRsp = map[int32]string{
+	1: "StatusCode",
+	2: "StatusMsg",
+}
+
 var fieldIDToName_PingReq = map[int32]string{
 	1: "Message",
 }
@@ -1689,5 +1778,3 @@ var fieldIDToName_ListDeviceRsp = map[int32]string{
 	1: "Base",
 	2: "Device",
 }
-
-var _ = common.File_common_proto

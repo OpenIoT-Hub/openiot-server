@@ -4,7 +4,6 @@ package openiotdeviceservice
 
 import (
 	"context"
-	common "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/common"
 	device "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/device"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
@@ -12,7 +11,7 @@ import (
 
 // Client is designed to provide IDL-compatible methods with call-option parameter for kitex framework.
 type Client interface {
-	Ping(ctx context.Context, Req *device.PingReq, callOptions ...callopt.Option) (r *common.BaseRsp, err error)
+	Ping(ctx context.Context, Req *device.PingReq, callOptions ...callopt.Option) (r *device.BaseRsp, err error)
 	CreateDevice(ctx context.Context, Req *device.CreateDeviceReq, callOptions ...callopt.Option) (r *device.CreateDeviceRsp, err error)
 	RemoveDevice(ctx context.Context, Req *device.RemoveDeviceReq, callOptions ...callopt.Option) (r *device.RemoveDeviceRsp, err error)
 	UpdateDevice(ctx context.Context, Req *device.UpdateDeviceReq, callOptions ...callopt.Option) (r *device.UpdateDeviceRsp, err error)
@@ -49,7 +48,7 @@ type kOpeniotDeviceServiceClient struct {
 	*kClient
 }
 
-func (p *kOpeniotDeviceServiceClient) Ping(ctx context.Context, Req *device.PingReq, callOptions ...callopt.Option) (r *common.BaseRsp, err error) {
+func (p *kOpeniotDeviceServiceClient) Ping(ctx context.Context, Req *device.PingReq, callOptions ...callopt.Option) (r *device.BaseRsp, err error) {
 	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
 	return p.kClient.Ping(ctx, Req)
 }

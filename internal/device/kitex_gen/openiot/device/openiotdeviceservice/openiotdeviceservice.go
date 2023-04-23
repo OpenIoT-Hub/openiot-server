@@ -5,7 +5,6 @@ package openiotdeviceservice
 import (
 	"context"
 	"fmt"
-	common "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/common"
 	device "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/device"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
@@ -132,14 +131,14 @@ func (p *PingArgs) IsSetReq() bool {
 }
 
 type PingResult struct {
-	Success *common.BaseRsp
+	Success *device.BaseRsp
 }
 
-var PingResult_Success_DEFAULT *common.BaseRsp
+var PingResult_Success_DEFAULT *device.BaseRsp
 
 func (p *PingResult) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
 	if !p.IsSetSuccess() {
-		p.Success = new(common.BaseRsp)
+		p.Success = new(device.BaseRsp)
 	}
 	return p.Success.FastRead(buf, _type, number)
 }
@@ -166,7 +165,7 @@ func (p *PingResult) Marshal(out []byte) ([]byte, error) {
 }
 
 func (p *PingResult) Unmarshal(in []byte) error {
-	msg := new(common.BaseRsp)
+	msg := new(device.BaseRsp)
 	if err := proto.Unmarshal(in, msg); err != nil {
 		return err
 	}
@@ -174,7 +173,7 @@ func (p *PingResult) Unmarshal(in []byte) error {
 	return nil
 }
 
-func (p *PingResult) GetSuccess() *common.BaseRsp {
+func (p *PingResult) GetSuccess() *device.BaseRsp {
 	if !p.IsSetSuccess() {
 		return PingResult_Success_DEFAULT
 	}
@@ -182,7 +181,7 @@ func (p *PingResult) GetSuccess() *common.BaseRsp {
 }
 
 func (p *PingResult) SetSuccess(x interface{}) {
-	p.Success = x.(*common.BaseRsp)
+	p.Success = x.(*device.BaseRsp)
 }
 
 func (p *PingResult) IsSetSuccess() bool {
@@ -924,7 +923,7 @@ func newServiceClient(c client.Client) *kClient {
 	}
 }
 
-func (p *kClient) Ping(ctx context.Context, Req *device.PingReq) (r *common.BaseRsp, err error) {
+func (p *kClient) Ping(ctx context.Context, Req *device.PingReq) (r *device.BaseRsp, err error) {
 	var _args PingArgs
 	_args.Req = Req
 	var _result PingResult
