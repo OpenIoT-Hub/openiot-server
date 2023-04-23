@@ -5,6 +5,7 @@ import (
 	"github.com/OpenIoT-Hub/openiot-server/internal/user/pack"
 	"github.com/OpenIoT-Hub/openiot-server/internal/user/service"
 	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
+	common "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/common"
 )
 
 // OpeniotUserServiceImpl implements the last service interface defined in the IDL.
@@ -26,5 +27,11 @@ func (s *OpeniotUserServiceImpl) GetUserInfo(ctx context.Context, req *user.GetU
 	base := pack.BuildBaseRsp(eCode)
 	resp.UserInfo = &info
 	resp.Base = base
+	return
+}
+
+// Ping implements the OpeniotCommonServiceImpl interface.
+func (s *OpeniotCommonServiceImpl) Ping(ctx context.Context, req *common.PingReq) (resp *common.BaseRsp, err error) {
+	// TODO: Your code here...
 	return
 }
