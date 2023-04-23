@@ -4,7 +4,7 @@ package device
 
 import (
 	fmt "fmt"
-	openiot "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot"
+	common "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/common"
 	fastpb "github.com/cloudwego/fastpb"
 )
 
@@ -509,7 +509,7 @@ ReadFieldError:
 }
 
 func (x *CreateDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v openiot.BaseRsp
+	var v common.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -539,7 +539,7 @@ ReadFieldError:
 }
 
 func (x *RemoveDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v openiot.BaseRsp
+	var v common.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -569,7 +569,7 @@ ReadFieldError:
 }
 
 func (x *UpdateDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v openiot.BaseRsp
+	var v common.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -604,7 +604,7 @@ ReadFieldError:
 }
 
 func (x *GetDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v openiot.BaseRsp
+	var v common.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -649,7 +649,7 @@ ReadFieldError:
 }
 
 func (x *ListDeviceRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
-	var v openiot.BaseRsp
+	var v common.BaseRsp
 	offset, err = fastpb.ReadMessage(buf, _type, &v)
 	if err != nil {
 		return offset, err
@@ -1690,4 +1690,4 @@ var fieldIDToName_ListDeviceRsp = map[int32]string{
 	2: "Device",
 }
 
-var _ = openiot.File_openiot_proto
+var _ = common.File_common_proto

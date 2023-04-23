@@ -4,7 +4,7 @@ generate:
 	-service "openiot-user" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	-I ./../../idl/ user.proto \
+	-I ./../../idl/ server/user.proto \
 	&& go mod tidy
 
 .PHONY: run_client
@@ -18,3 +18,4 @@ run_server:
 # Service: user
 # Path: internal/user
 # Optional: -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen"
+# kitex -service "openiot-user" -module "github.com/OpenIoT-Hub/openiot-server" -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" -type protobuf -I ./../../idl/ server/user.proto

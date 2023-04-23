@@ -3,7 +3,6 @@
 package openiot
 
 import (
-	openiot "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/handler/openiot"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 

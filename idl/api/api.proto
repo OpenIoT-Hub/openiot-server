@@ -1,11 +1,10 @@
-// idl/api.proto; 注解拓展
 syntax = "proto3";
 
 package api;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "api";
+option go_package = "openiot/api";
 
 extend google.protobuf.FieldOptions {
   string raw_body = 50101;
