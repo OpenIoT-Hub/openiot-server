@@ -6,8 +6,8 @@ option go_package = "openiot/api";
 
 import "api/api.proto";
 import "api/model.proto";
-import "api/message/device.proto";
-import "api/message/user.proto";
+import "api/message/node.proto";
+import "api/message/auth.proto";
 
 // 用户接口
 service OpeniotUserService {

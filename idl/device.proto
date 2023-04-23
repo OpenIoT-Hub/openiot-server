@@ -4,7 +4,7 @@ package idl;
 
 option go_package = "openiot/device";
 
-import "base.proto";
+import public "base.proto";
 
 service OpeniotDeviceService {
     rpc Ping(PingReq) returns (BaseRsp) {}
