@@ -4,7 +4,6 @@ generate:
 	-service "openiot-user" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	--protobuf Muser.proto= github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user \
 	-I ./../../idl/ user.proto \
 	&& go mod tidy
 
