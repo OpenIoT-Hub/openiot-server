@@ -4,8 +4,8 @@ generate:
 	-service "openiot-user" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	-I ./../../idl/ user.proto \
-	-I ./../../idl/ base.proto
+	--proto_path=./../../idl/ \
+	-I ./../../idl/ base.proto \
 
 .PHONY: run_client
 run_client:

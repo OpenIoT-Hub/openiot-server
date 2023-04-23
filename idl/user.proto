@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package idl;
 
-option go_package = "openiot/user";
+option go_package = "kitex_gen/openiot/user";
 
 import "base.proto";
 
