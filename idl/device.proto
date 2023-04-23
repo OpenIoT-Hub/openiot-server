@@ -7,7 +7,6 @@ option go_package = "kitex_gen/openiot/device";
 import "base.proto";
 
 service OpeniotDeviceService {
-    rpc Ping(PingReq) returns (BaseRsp) {}
     rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {}
     rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {}
     rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {}

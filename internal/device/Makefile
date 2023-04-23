@@ -4,8 +4,9 @@ generate:
 	-service "openiot-device" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
+	-combine-service "base.proto" \
 	-use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" \
-	-I ./../../idl/ device.proto \
+	-I ./../../idl/ device.proto
 
 .PHONY: run_client
 run_client:
