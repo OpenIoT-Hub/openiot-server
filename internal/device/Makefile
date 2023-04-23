@@ -4,8 +4,7 @@ generate:
 	-service "openiot-device" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	-I ./../../idl/ device.proto\
-	&& go mod tidy
+	-I ./../../idl/ device.proto
 
 .PHONY: run_client
 run_client:
