@@ -4,7 +4,7 @@ generate:
 	-service "openiot-user" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	-I ./../../idl/ server/user.proto \
+	-I ./../../idl/ user.proto \
 	&& go mod tidy
 
 .PHONY: run_client

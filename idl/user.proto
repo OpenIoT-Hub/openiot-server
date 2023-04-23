@@ -2,9 +2,7 @@ syntax = "proto3";
 
 package idl;
 
-option go_package = "openiot/user";
-
-import public "base.proto";
+option go_package = "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user";
 
 service OpeniotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
@@ -18,10 +16,13 @@ message User {
   string phone_num = 4; // 用户手机号码
   string avatar = 5; // 用户头像地址
 }
-
 message UserInfo {
   User user = 1;
   repeated string position = 2; // 用户职位，从 Authority 表中读取
+}
+message BaseRsp {
+  int64 status_code = 1; // 状态码，0-成功，其他值-失败
+  string status_msg = 2; // 返回状态描述
 }
 
 /******************************/
