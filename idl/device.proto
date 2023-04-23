@@ -4,6 +4,8 @@ package idl;
 
 option go_package = "openiot/device";
 
+import "base.proto";
+
 service OpeniotDeviceService {
     rpc Ping(PingReq) returns (BaseRsp) {}
     rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {}
@@ -36,17 +38,10 @@ message Device {
     string comment = 7;
     string external = 8;
 }
-message BaseRsp {
-    int64 status_code = 1; // 状态码，0-成功，其他值-失败
-    string status_msg = 2; // 返回状态描述
-}
 
 /******************************/
 /** Request Collection, Req **/
 /******************************/
-message PingReq {
-    string message = 1;
-}
 message CreateDeviceReq {
     double Longitude = 1;
     double Latitude = 2;

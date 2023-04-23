@@ -4,6 +4,8 @@ package idl;
 
 option go_package = "openiot/user";
 
+import "base.proto";
+
 service OpeniotUserService {
   rpc Ping(PingReq) returns (BaseRsp){};
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){}
@@ -20,16 +22,9 @@ message UserInfo {
   User user = 1;
   repeated string position = 2; // 用户职位，从 Authority 表中读取
 }
-message BaseRsp {
-  int64 status_code = 1; // 状态码，0-成功，其他值-失败
-  string status_msg = 2; // 返回状态描述
-}
 
 /******************************/
 /** Request Collection, Req **/
-message PingReq {
-  string message = 1;
-}
 message GetUserInfoReq {
   uint64 user_id = 1;
 }
