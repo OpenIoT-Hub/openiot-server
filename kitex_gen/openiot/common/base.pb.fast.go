@@ -12,6 +12,31 @@ var (
 	_ = fastpb.Skip
 )
 
+func (x *PingReq) FastRead(buf []byte, _type int8, number int32) (offset int, err error) {
+	switch number {
+	case 1:
+		offset, err = x.fastReadField1(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
+	default:
+		offset, err = fastpb.Skip(buf, _type, number)
+		if err != nil {
+			goto SkipFieldError
+		}
+	}
+	return offset, nil
+SkipFieldError:
+	return offset, fmt.Errorf("%T cannot parse invalid wire-format data, error: %s", x, err)
+ReadFieldError:
+	return offset, fmt.Errorf("%T read field %d '%s' error: %s", x, number, fieldIDToName_PingReq[number], err)
+}
+
+func (x *PingReq) fastReadField1(buf []byte, _type int8) (offset int, err error) {
+	x.Message, offset, err = fastpb.ReadString(buf, _type)
+	return offset, err
+}
+
 func (x *BaseRsp) FastRead(buf []byte, _type int8, number int32) (offset int, err error) {
 	switch number {
 	case 1:
@@ -47,6 +72,67 @@ func (x *BaseRsp) fastReadField2(buf []byte, _type int8) (offset int, err error)
 	return offset, err
 }
 
+func (x *ListRsp) FastRead(buf []byte, _type int8, number int32) (offset int, err error) {
+	switch number {
+	case 1:
+		offset, err = x.fastReadField1(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
+	case 2:
+		offset, err = x.fastReadField2(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
+	case 3:
+		offset, err = x.fastReadField3(buf, _type)
+		if err != nil {
+			goto ReadFieldError
+		}
+	default:
+		offset, err = fastpb.Skip(buf, _type, number)
+		if err != nil {
+			goto SkipFieldError
+		}
+	}
+	return offset, nil
+SkipFieldError:
+	return offset, fmt.Errorf("%T cannot parse invalid wire-format data, error: %s", x, err)
+ReadFieldError:
+	return offset, fmt.Errorf("%T read field %d '%s' error: %s", x, number, fieldIDToName_ListRsp[number], err)
+}
+
+func (x *ListRsp) fastReadField1(buf []byte, _type int8) (offset int, err error) {
+	x.Count, offset, err = fastpb.ReadInt64(buf, _type)
+	return offset, err
+}
+
+func (x *ListRsp) fastReadField2(buf []byte, _type int8) (offset int, err error) {
+	x.Page, offset, err = fastpb.ReadInt64(buf, _type)
+	return offset, err
+}
+
+func (x *ListRsp) fastReadField3(buf []byte, _type int8) (offset int, err error) {
+	x.Limit, offset, err = fastpb.ReadInt64(buf, _type)
+	return offset, err
+}
+
+func (x *PingReq) FastWrite(buf []byte) (offset int) {
+	if x == nil {
+		return offset
+	}
+	offset += x.fastWriteField1(buf[offset:])
+	return offset
+}
+
+func (x *PingReq) fastWriteField1(buf []byte) (offset int) {
+	if x.Message == "" {
+		return offset
+	}
+	offset += fastpb.WriteString(buf[offset:], 1, x.Message)
+	return offset
+}
+
 func (x *BaseRsp) FastWrite(buf []byte) (offset int) {
 	if x == nil {
 		return offset
@@ -70,6 +156,56 @@ func (x *BaseRsp) fastWriteField2(buf []byte) (offset int) {
 	}
 	offset += fastpb.WriteString(buf[offset:], 2, x.StatusMsg)
 	return offset
+}
+
+func (x *ListRsp) FastWrite(buf []byte) (offset int) {
+	if x == nil {
+		return offset
+	}
+	offset += x.fastWriteField1(buf[offset:])
+	offset += x.fastWriteField2(buf[offset:])
+	offset += x.fastWriteField3(buf[offset:])
+	return offset
+}
+
+func (x *ListRsp) fastWriteField1(buf []byte) (offset int) {
+	if x.Count == 0 {
+		return offset
+	}
+	offset += fastpb.WriteInt64(buf[offset:], 1, x.Count)
+	return offset
+}
+
+func (x *ListRsp) fastWriteField2(buf []byte) (offset int) {
+	if x.Page == 0 {
+		return offset
+	}
+	offset += fastpb.WriteInt64(buf[offset:], 2, x.Page)
+	return offset
+}
+
+func (x *ListRsp) fastWriteField3(buf []byte) (offset int) {
+	if x.Limit == 0 {
+		return offset
+	}
+	offset += fastpb.WriteInt64(buf[offset:], 3, x.Limit)
+	return offset
+}
+
+func (x *PingReq) Size() (n int) {
+	if x == nil {
+		return n
+	}
+	n += x.sizeField1()
+	return n
+}
+
+func (x *PingReq) sizeField1() (n int) {
+	if x.Message == "" {
+		return n
+	}
+	n += fastpb.SizeString(1, x.Message)
+	return n
 }
 
 func (x *BaseRsp) Size() (n int) {
@@ -97,7 +233,51 @@ func (x *BaseRsp) sizeField2() (n int) {
 	return n
 }
 
+func (x *ListRsp) Size() (n int) {
+	if x == nil {
+		return n
+	}
+	n += x.sizeField1()
+	n += x.sizeField2()
+	n += x.sizeField3()
+	return n
+}
+
+func (x *ListRsp) sizeField1() (n int) {
+	if x.Count == 0 {
+		return n
+	}
+	n += fastpb.SizeInt64(1, x.Count)
+	return n
+}
+
+func (x *ListRsp) sizeField2() (n int) {
+	if x.Page == 0 {
+		return n
+	}
+	n += fastpb.SizeInt64(2, x.Page)
+	return n
+}
+
+func (x *ListRsp) sizeField3() (n int) {
+	if x.Limit == 0 {
+		return n
+	}
+	n += fastpb.SizeInt64(3, x.Limit)
+	return n
+}
+
+var fieldIDToName_PingReq = map[int32]string{
+	1: "Message",
+}
+
 var fieldIDToName_BaseRsp = map[int32]string{
 	1: "StatusCode",
 	2: "StatusMsg",
+}
+
+var fieldIDToName_ListRsp = map[int32]string{
+	1: "Count",
+	2: "Page",
+	3: "Limit",
 }

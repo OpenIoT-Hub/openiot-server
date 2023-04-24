@@ -4,15 +4,18 @@ package openiotuserservice
 
 import (
 	"context"
-	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
+	user "github.com/OpenIoT-Hub/openiot-server/internal/user/kitex_gen/openiot/user"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
 )
 
 // Client is designed to provide IDL-compatible methods with call-option parameter for kitex framework.
 type Client interface {
-	Ping(ctx context.Context, Req *user.PingReq, callOptions ...callopt.Option) (r *user.BaseRsp, err error)
+	CreateUser(ctx context.Context, Req *user.CreateUserReq, callOptions ...callopt.Option) (r *user.CreateUserRsp, err error)
+	RemoveUser(ctx context.Context, Req *user.RemoveUserReq, callOptions ...callopt.Option) (r *user.RemoveUserRsp, err error)
+	UpdateUser(ctx context.Context, Req *user.UpdateUserReq, callOptions ...callopt.Option) (r *user.UpdateUserRsp, err error)
 	GetUserInfo(ctx context.Context, Req *user.GetUserInfoReq, callOptions ...callopt.Option) (r *user.GetUserInfoRsp, err error)
+	ListUserInfo(ctx context.Context, Req *user.ListUserInfoReq, callOptions ...callopt.Option) (r *user.ListUserInfoRsp, err error)
 }
 
 // NewClient creates a client for the service defined in IDL.
@@ -44,12 +47,27 @@ type kOpeniotUserServiceClient struct {
 	*kClient
 }
 
-func (p *kOpeniotUserServiceClient) Ping(ctx context.Context, Req *user.PingReq, callOptions ...callopt.Option) (r *user.BaseRsp, err error) {
+func (p *kOpeniotUserServiceClient) CreateUser(ctx context.Context, Req *user.CreateUserReq, callOptions ...callopt.Option) (r *user.CreateUserRsp, err error) {
 	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
-	return p.kClient.Ping(ctx, Req)
+	return p.kClient.CreateUser(ctx, Req)
+}
+
+func (p *kOpeniotUserServiceClient) RemoveUser(ctx context.Context, Req *user.RemoveUserReq, callOptions ...callopt.Option) (r *user.RemoveUserRsp, err error) {
+	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
+	return p.kClient.RemoveUser(ctx, Req)
+}
+
+func (p *kOpeniotUserServiceClient) UpdateUser(ctx context.Context, Req *user.UpdateUserReq, callOptions ...callopt.Option) (r *user.UpdateUserRsp, err error) {
+	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
+	return p.kClient.UpdateUser(ctx, Req)
 }
 
 func (p *kOpeniotUserServiceClient) GetUserInfo(ctx context.Context, Req *user.GetUserInfoReq, callOptions ...callopt.Option) (r *user.GetUserInfoRsp, err error) {
 	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
 	return p.kClient.GetUserInfo(ctx, Req)
+}
+
+func (p *kOpeniotUserServiceClient) ListUserInfo(ctx context.Context, Req *user.ListUserInfoReq, callOptions ...callopt.Option) (r *user.ListUserInfoRsp, err error) {
+	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
+	return p.kClient.ListUserInfo(ctx, Req)
 }

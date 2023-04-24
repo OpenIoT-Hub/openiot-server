@@ -5,7 +5,7 @@ package openiotuserservice
 import (
 	"context"
 	"fmt"
-	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
+	user "github.com/OpenIoT-Hub/openiot-server/internal/user/kitex_gen/openiot/user"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
 	streaming "github.com/cloudwego/kitex/pkg/streaming"
@@ -22,8 +22,11 @@ func NewServiceInfo() *kitex.ServiceInfo {
 	serviceName := "OpeniotUserService"
 	handlerType := (*user.OpeniotUserService)(nil)
 	methods := map[string]kitex.MethodInfo{
-		"Ping":        kitex.NewMethodInfo(pingHandler, newPingArgs, newPingResult, false),
-		"GetUserInfo": kitex.NewMethodInfo(getUserInfoHandler, newGetUserInfoArgs, newGetUserInfoResult, false),
+		"CreateUser":   kitex.NewMethodInfo(createUserHandler, newCreateUserArgs, newCreateUserResult, false),
+		"RemoveUser":   kitex.NewMethodInfo(removeUserHandler, newRemoveUserArgs, newRemoveUserResult, false),
+		"UpdateUser":   kitex.NewMethodInfo(updateUserHandler, newUpdateUserArgs, newUpdateUserResult, false),
+		"GetUserInfo":  kitex.NewMethodInfo(getUserInfoHandler, newGetUserInfoArgs, newGetUserInfoResult, false),
+		"ListUserInfo": kitex.NewMethodInfo(listUserInfoHandler, newListUserInfoArgs, newListUserInfoResult, false),
 	}
 	extra := map[string]interface{}{
 		"PackageName": "idl",
@@ -39,73 +42,73 @@ func NewServiceInfo() *kitex.ServiceInfo {
 	return svcInfo
 }
 
-func pingHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+func createUserHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
 	switch s := arg.(type) {
 	case *streaming.Args:
 		st := s.Stream
-		req := new(user.PingReq)
+		req := new(user.CreateUserReq)
 		if err := st.RecvMsg(req); err != nil {
 			return err
 		}
-		resp, err := handler.(user.OpeniotUserService).Ping(ctx, req)
+		resp, err := handler.(user.OpeniotUserService).CreateUser(ctx, req)
 		if err != nil {
 			return err
 		}
 		if err := st.SendMsg(resp); err != nil {
 			return err
 		}
-	case *PingArgs:
-		success, err := handler.(user.OpeniotUserService).Ping(ctx, s.Req)
+	case *CreateUserArgs:
+		success, err := handler.(user.OpeniotUserService).CreateUser(ctx, s.Req)
 		if err != nil {
 			return err
 		}
-		realResult := result.(*PingResult)
+		realResult := result.(*CreateUserResult)
 		realResult.Success = success
 	}
 	return nil
 }
-func newPingArgs() interface{} {
-	return &PingArgs{}
+func newCreateUserArgs() interface{} {
+	return &CreateUserArgs{}
 }
 
-func newPingResult() interface{} {
-	return &PingResult{}
+func newCreateUserResult() interface{} {
+	return &CreateUserResult{}
 }
 
-type PingArgs struct {
-	Req *user.PingReq
+type CreateUserArgs struct {
+	Req *user.CreateUserReq
 }
 
-func (p *PingArgs) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+func (p *CreateUserArgs) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
 	if !p.IsSetReq() {
-		p.Req = new(user.PingReq)
+		p.Req = new(user.CreateUserReq)
 	}
 	return p.Req.FastRead(buf, _type, number)
 }
 
-func (p *PingArgs) FastWrite(buf []byte) (n int) {
+func (p *CreateUserArgs) FastWrite(buf []byte) (n int) {
 	if !p.IsSetReq() {
 		return 0
 	}
 	return p.Req.FastWrite(buf)
 }
 
-func (p *PingArgs) Size() (n int) {
+func (p *CreateUserArgs) Size() (n int) {
 	if !p.IsSetReq() {
 		return 0
 	}
 	return p.Req.Size()
 }
 
-func (p *PingArgs) Marshal(out []byte) ([]byte, error) {
+func (p *CreateUserArgs) Marshal(out []byte) ([]byte, error) {
 	if !p.IsSetReq() {
-		return out, fmt.Errorf("No req in PingArgs")
+		return out, fmt.Errorf("No req in CreateUserArgs")
 	}
 	return proto.Marshal(p.Req)
 }
 
-func (p *PingArgs) Unmarshal(in []byte) error {
-	msg := new(user.PingReq)
+func (p *CreateUserArgs) Unmarshal(in []byte) error {
+	msg := new(user.CreateUserReq)
 	if err := proto.Unmarshal(in, msg); err != nil {
 		return err
 	}
@@ -113,55 +116,55 @@ func (p *PingArgs) Unmarshal(in []byte) error {
 	return nil
 }
 
-var PingArgs_Req_DEFAULT *user.PingReq
+var CreateUserArgs_Req_DEFAULT *user.CreateUserReq
 
-func (p *PingArgs) GetReq() *user.PingReq {
+func (p *CreateUserArgs) GetReq() *user.CreateUserReq {
 	if !p.IsSetReq() {
-		return PingArgs_Req_DEFAULT
+		return CreateUserArgs_Req_DEFAULT
 	}
 	return p.Req
 }
 
-func (p *PingArgs) IsSetReq() bool {
+func (p *CreateUserArgs) IsSetReq() bool {
 	return p.Req != nil
 }
 
-type PingResult struct {
-	Success *user.BaseRsp
+type CreateUserResult struct {
+	Success *user.CreateUserRsp
 }
 
-var PingResult_Success_DEFAULT *user.BaseRsp
+var CreateUserResult_Success_DEFAULT *user.CreateUserRsp
 
-func (p *PingResult) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+func (p *CreateUserResult) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
 	if !p.IsSetSuccess() {
-		p.Success = new(user.BaseRsp)
+		p.Success = new(user.CreateUserRsp)
 	}
 	return p.Success.FastRead(buf, _type, number)
 }
 
-func (p *PingResult) FastWrite(buf []byte) (n int) {
+func (p *CreateUserResult) FastWrite(buf []byte) (n int) {
 	if !p.IsSetSuccess() {
 		return 0
 	}
 	return p.Success.FastWrite(buf)
 }
 
-func (p *PingResult) Size() (n int) {
+func (p *CreateUserResult) Size() (n int) {
 	if !p.IsSetSuccess() {
 		return 0
 	}
 	return p.Success.Size()
 }
 
-func (p *PingResult) Marshal(out []byte) ([]byte, error) {
+func (p *CreateUserResult) Marshal(out []byte) ([]byte, error) {
 	if !p.IsSetSuccess() {
-		return out, fmt.Errorf("No req in PingResult")
+		return out, fmt.Errorf("No req in CreateUserResult")
 	}
 	return proto.Marshal(p.Success)
 }
 
-func (p *PingResult) Unmarshal(in []byte) error {
-	msg := new(user.BaseRsp)
+func (p *CreateUserResult) Unmarshal(in []byte) error {
+	msg := new(user.CreateUserRsp)
 	if err := proto.Unmarshal(in, msg); err != nil {
 		return err
 	}
@@ -169,18 +172,308 @@ func (p *PingResult) Unmarshal(in []byte) error {
 	return nil
 }
 
-func (p *PingResult) GetSuccess() *user.BaseRsp {
+func (p *CreateUserResult) GetSuccess() *user.CreateUserRsp {
 	if !p.IsSetSuccess() {
-		return PingResult_Success_DEFAULT
+		return CreateUserResult_Success_DEFAULT
 	}
 	return p.Success
 }
 
-func (p *PingResult) SetSuccess(x interface{}) {
-	p.Success = x.(*user.BaseRsp)
+func (p *CreateUserResult) SetSuccess(x interface{}) {
+	p.Success = x.(*user.CreateUserRsp)
 }
 
-func (p *PingResult) IsSetSuccess() bool {
+func (p *CreateUserResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
+func removeUserHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	switch s := arg.(type) {
+	case *streaming.Args:
+		st := s.Stream
+		req := new(user.RemoveUserReq)
+		if err := st.RecvMsg(req); err != nil {
+			return err
+		}
+		resp, err := handler.(user.OpeniotUserService).RemoveUser(ctx, req)
+		if err != nil {
+			return err
+		}
+		if err := st.SendMsg(resp); err != nil {
+			return err
+		}
+	case *RemoveUserArgs:
+		success, err := handler.(user.OpeniotUserService).RemoveUser(ctx, s.Req)
+		if err != nil {
+			return err
+		}
+		realResult := result.(*RemoveUserResult)
+		realResult.Success = success
+	}
+	return nil
+}
+func newRemoveUserArgs() interface{} {
+	return &RemoveUserArgs{}
+}
+
+func newRemoveUserResult() interface{} {
+	return &RemoveUserResult{}
+}
+
+type RemoveUserArgs struct {
+	Req *user.RemoveUserReq
+}
+
+func (p *RemoveUserArgs) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+	if !p.IsSetReq() {
+		p.Req = new(user.RemoveUserReq)
+	}
+	return p.Req.FastRead(buf, _type, number)
+}
+
+func (p *RemoveUserArgs) FastWrite(buf []byte) (n int) {
+	if !p.IsSetReq() {
+		return 0
+	}
+	return p.Req.FastWrite(buf)
+}
+
+func (p *RemoveUserArgs) Size() (n int) {
+	if !p.IsSetReq() {
+		return 0
+	}
+	return p.Req.Size()
+}
+
+func (p *RemoveUserArgs) Marshal(out []byte) ([]byte, error) {
+	if !p.IsSetReq() {
+		return out, fmt.Errorf("No req in RemoveUserArgs")
+	}
+	return proto.Marshal(p.Req)
+}
+
+func (p *RemoveUserArgs) Unmarshal(in []byte) error {
+	msg := new(user.RemoveUserReq)
+	if err := proto.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Req = msg
+	return nil
+}
+
+var RemoveUserArgs_Req_DEFAULT *user.RemoveUserReq
+
+func (p *RemoveUserArgs) GetReq() *user.RemoveUserReq {
+	if !p.IsSetReq() {
+		return RemoveUserArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+
+func (p *RemoveUserArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+type RemoveUserResult struct {
+	Success *user.RemoveUserRsp
+}
+
+var RemoveUserResult_Success_DEFAULT *user.RemoveUserRsp
+
+func (p *RemoveUserResult) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+	if !p.IsSetSuccess() {
+		p.Success = new(user.RemoveUserRsp)
+	}
+	return p.Success.FastRead(buf, _type, number)
+}
+
+func (p *RemoveUserResult) FastWrite(buf []byte) (n int) {
+	if !p.IsSetSuccess() {
+		return 0
+	}
+	return p.Success.FastWrite(buf)
+}
+
+func (p *RemoveUserResult) Size() (n int) {
+	if !p.IsSetSuccess() {
+		return 0
+	}
+	return p.Success.Size()
+}
+
+func (p *RemoveUserResult) Marshal(out []byte) ([]byte, error) {
+	if !p.IsSetSuccess() {
+		return out, fmt.Errorf("No req in RemoveUserResult")
+	}
+	return proto.Marshal(p.Success)
+}
+
+func (p *RemoveUserResult) Unmarshal(in []byte) error {
+	msg := new(user.RemoveUserRsp)
+	if err := proto.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Success = msg
+	return nil
+}
+
+func (p *RemoveUserResult) GetSuccess() *user.RemoveUserRsp {
+	if !p.IsSetSuccess() {
+		return RemoveUserResult_Success_DEFAULT
+	}
+	return p.Success
+}
+
+func (p *RemoveUserResult) SetSuccess(x interface{}) {
+	p.Success = x.(*user.RemoveUserRsp)
+}
+
+func (p *RemoveUserResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
+func updateUserHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	switch s := arg.(type) {
+	case *streaming.Args:
+		st := s.Stream
+		req := new(user.UpdateUserReq)
+		if err := st.RecvMsg(req); err != nil {
+			return err
+		}
+		resp, err := handler.(user.OpeniotUserService).UpdateUser(ctx, req)
+		if err != nil {
+			return err
+		}
+		if err := st.SendMsg(resp); err != nil {
+			return err
+		}
+	case *UpdateUserArgs:
+		success, err := handler.(user.OpeniotUserService).UpdateUser(ctx, s.Req)
+		if err != nil {
+			return err
+		}
+		realResult := result.(*UpdateUserResult)
+		realResult.Success = success
+	}
+	return nil
+}
+func newUpdateUserArgs() interface{} {
+	return &UpdateUserArgs{}
+}
+
+func newUpdateUserResult() interface{} {
+	return &UpdateUserResult{}
+}
+
+type UpdateUserArgs struct {
+	Req *user.UpdateUserReq
+}
+
+func (p *UpdateUserArgs) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+	if !p.IsSetReq() {
+		p.Req = new(user.UpdateUserReq)
+	}
+	return p.Req.FastRead(buf, _type, number)
+}
+
+func (p *UpdateUserArgs) FastWrite(buf []byte) (n int) {
+	if !p.IsSetReq() {
+		return 0
+	}
+	return p.Req.FastWrite(buf)
+}
+
+func (p *UpdateUserArgs) Size() (n int) {
+	if !p.IsSetReq() {
+		return 0
+	}
+	return p.Req.Size()
+}
+
+func (p *UpdateUserArgs) Marshal(out []byte) ([]byte, error) {
+	if !p.IsSetReq() {
+		return out, fmt.Errorf("No req in UpdateUserArgs")
+	}
+	return proto.Marshal(p.Req)
+}
+
+func (p *UpdateUserArgs) Unmarshal(in []byte) error {
+	msg := new(user.UpdateUserReq)
+	if err := proto.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Req = msg
+	return nil
+}
+
+var UpdateUserArgs_Req_DEFAULT *user.UpdateUserReq
+
+func (p *UpdateUserArgs) GetReq() *user.UpdateUserReq {
+	if !p.IsSetReq() {
+		return UpdateUserArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+
+func (p *UpdateUserArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+type UpdateUserResult struct {
+	Success *user.UpdateUserRsp
+}
+
+var UpdateUserResult_Success_DEFAULT *user.UpdateUserRsp
+
+func (p *UpdateUserResult) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+	if !p.IsSetSuccess() {
+		p.Success = new(user.UpdateUserRsp)
+	}
+	return p.Success.FastRead(buf, _type, number)
+}
+
+func (p *UpdateUserResult) FastWrite(buf []byte) (n int) {
+	if !p.IsSetSuccess() {
+		return 0
+	}
+	return p.Success.FastWrite(buf)
+}
+
+func (p *UpdateUserResult) Size() (n int) {
+	if !p.IsSetSuccess() {
+		return 0
+	}
+	return p.Success.Size()
+}
+
+func (p *UpdateUserResult) Marshal(out []byte) ([]byte, error) {
+	if !p.IsSetSuccess() {
+		return out, fmt.Errorf("No req in UpdateUserResult")
+	}
+	return proto.Marshal(p.Success)
+}
+
+func (p *UpdateUserResult) Unmarshal(in []byte) error {
+	msg := new(user.UpdateUserRsp)
+	if err := proto.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Success = msg
+	return nil
+}
+
+func (p *UpdateUserResult) GetSuccess() *user.UpdateUserRsp {
+	if !p.IsSetSuccess() {
+		return UpdateUserResult_Success_DEFAULT
+	}
+	return p.Success
+}
+
+func (p *UpdateUserResult) SetSuccess(x interface{}) {
+	p.Success = x.(*user.UpdateUserRsp)
+}
+
+func (p *UpdateUserResult) IsSetSuccess() bool {
 	return p.Success != nil
 }
 
@@ -329,6 +622,151 @@ func (p *GetUserInfoResult) IsSetSuccess() bool {
 	return p.Success != nil
 }
 
+func listUserInfoHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
+	switch s := arg.(type) {
+	case *streaming.Args:
+		st := s.Stream
+		req := new(user.ListUserInfoReq)
+		if err := st.RecvMsg(req); err != nil {
+			return err
+		}
+		resp, err := handler.(user.OpeniotUserService).ListUserInfo(ctx, req)
+		if err != nil {
+			return err
+		}
+		if err := st.SendMsg(resp); err != nil {
+			return err
+		}
+	case *ListUserInfoArgs:
+		success, err := handler.(user.OpeniotUserService).ListUserInfo(ctx, s.Req)
+		if err != nil {
+			return err
+		}
+		realResult := result.(*ListUserInfoResult)
+		realResult.Success = success
+	}
+	return nil
+}
+func newListUserInfoArgs() interface{} {
+	return &ListUserInfoArgs{}
+}
+
+func newListUserInfoResult() interface{} {
+	return &ListUserInfoResult{}
+}
+
+type ListUserInfoArgs struct {
+	Req *user.ListUserInfoReq
+}
+
+func (p *ListUserInfoArgs) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+	if !p.IsSetReq() {
+		p.Req = new(user.ListUserInfoReq)
+	}
+	return p.Req.FastRead(buf, _type, number)
+}
+
+func (p *ListUserInfoArgs) FastWrite(buf []byte) (n int) {
+	if !p.IsSetReq() {
+		return 0
+	}
+	return p.Req.FastWrite(buf)
+}
+
+func (p *ListUserInfoArgs) Size() (n int) {
+	if !p.IsSetReq() {
+		return 0
+	}
+	return p.Req.Size()
+}
+
+func (p *ListUserInfoArgs) Marshal(out []byte) ([]byte, error) {
+	if !p.IsSetReq() {
+		return out, fmt.Errorf("No req in ListUserInfoArgs")
+	}
+	return proto.Marshal(p.Req)
+}
+
+func (p *ListUserInfoArgs) Unmarshal(in []byte) error {
+	msg := new(user.ListUserInfoReq)
+	if err := proto.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Req = msg
+	return nil
+}
+
+var ListUserInfoArgs_Req_DEFAULT *user.ListUserInfoReq
+
+func (p *ListUserInfoArgs) GetReq() *user.ListUserInfoReq {
+	if !p.IsSetReq() {
+		return ListUserInfoArgs_Req_DEFAULT
+	}
+	return p.Req
+}
+
+func (p *ListUserInfoArgs) IsSetReq() bool {
+	return p.Req != nil
+}
+
+type ListUserInfoResult struct {
+	Success *user.ListUserInfoRsp
+}
+
+var ListUserInfoResult_Success_DEFAULT *user.ListUserInfoRsp
+
+func (p *ListUserInfoResult) FastRead(buf []byte, _type int8, number int32) (n int, err error) {
+	if !p.IsSetSuccess() {
+		p.Success = new(user.ListUserInfoRsp)
+	}
+	return p.Success.FastRead(buf, _type, number)
+}
+
+func (p *ListUserInfoResult) FastWrite(buf []byte) (n int) {
+	if !p.IsSetSuccess() {
+		return 0
+	}
+	return p.Success.FastWrite(buf)
+}
+
+func (p *ListUserInfoResult) Size() (n int) {
+	if !p.IsSetSuccess() {
+		return 0
+	}
+	return p.Success.Size()
+}
+
+func (p *ListUserInfoResult) Marshal(out []byte) ([]byte, error) {
+	if !p.IsSetSuccess() {
+		return out, fmt.Errorf("No req in ListUserInfoResult")
+	}
+	return proto.Marshal(p.Success)
+}
+
+func (p *ListUserInfoResult) Unmarshal(in []byte) error {
+	msg := new(user.ListUserInfoRsp)
+	if err := proto.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Success = msg
+	return nil
+}
+
+func (p *ListUserInfoResult) GetSuccess() *user.ListUserInfoRsp {
+	if !p.IsSetSuccess() {
+		return ListUserInfoResult_Success_DEFAULT
+	}
+	return p.Success
+}
+
+func (p *ListUserInfoResult) SetSuccess(x interface{}) {
+	p.Success = x.(*user.ListUserInfoRsp)
+}
+
+func (p *ListUserInfoResult) IsSetSuccess() bool {
+	return p.Success != nil
+}
+
 type kClient struct {
 	c client.Client
 }
@@ -339,11 +777,31 @@ func newServiceClient(c client.Client) *kClient {
 	}
 }
 
-func (p *kClient) Ping(ctx context.Context, Req *user.PingReq) (r *user.BaseRsp, err error) {
-	var _args PingArgs
+func (p *kClient) CreateUser(ctx context.Context, Req *user.CreateUserReq) (r *user.CreateUserRsp, err error) {
+	var _args CreateUserArgs
 	_args.Req = Req
-	var _result PingResult
-	if err = p.c.Call(ctx, "Ping", &_args, &_result); err != nil {
+	var _result CreateUserResult
+	if err = p.c.Call(ctx, "CreateUser", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) RemoveUser(ctx context.Context, Req *user.RemoveUserReq) (r *user.RemoveUserRsp, err error) {
+	var _args RemoveUserArgs
+	_args.Req = Req
+	var _result RemoveUserResult
+	if err = p.c.Call(ctx, "RemoveUser", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) UpdateUser(ctx context.Context, Req *user.UpdateUserReq) (r *user.UpdateUserRsp, err error) {
+	var _args UpdateUserArgs
+	_args.Req = Req
+	var _result UpdateUserResult
+	if err = p.c.Call(ctx, "UpdateUser", &_args, &_result); err != nil {
 		return
 	}
 	return _result.GetSuccess(), nil
@@ -354,6 +812,16 @@ func (p *kClient) GetUserInfo(ctx context.Context, Req *user.GetUserInfoReq) (r 
 	_args.Req = Req
 	var _result GetUserInfoResult
 	if err = p.c.Call(ctx, "GetUserInfo", &_args, &_result); err != nil {
+		return
+	}
+	return _result.GetSuccess(), nil
+}
+
+func (p *kClient) ListUserInfo(ctx context.Context, Req *user.ListUserInfoReq) (r *user.ListUserInfoRsp, err error) {
+	var _args ListUserInfoArgs
+	_args.Req = Req
+	var _result ListUserInfoResult
+	if err = p.c.Call(ctx, "ListUserInfo", &_args, &_result); err != nil {
 		return
 	}
 	return _result.GetSuccess(), nil
