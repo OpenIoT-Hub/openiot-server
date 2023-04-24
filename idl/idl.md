@@ -53,4 +53,138 @@ The following is the list of api defined in the idl files.
 - Default Page Limit is Page 1, Limit 15.
 
 - In Delete Operation, it is actually lazy delete. If a user is deleted, the data will write the timestamp into the field `delete_at`. In each query, there will be a condition of `delete_at is null`. 
-- In Create Operation, if someone is renew in the database who was deleted from database. User Module Service will check there are same phone number, it will remove the content of field `delete_at` and become the variable user data.
+- In Create Operation, if someone is renewed in the database who was deleted from database. User Module Service will check there are same phone number, it will remove the content of field `delete_at` and become the variable user data.
+
+---
+> The following temp Content is a template generate by GPT.
+
+### Device Module
+
+#### API List
+
+##### Create Device
+
+Create a new device.
+
+```
+rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {}
+```
+
+> Request
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_name` | string | Name of the device. |
+| `device_type` | string | Type of the device. |
+| `device_location` | string | Location of the device. |
+
+> Response
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the newly created device. |
+| `status` | string | Status message. |
+
+---
+
+###### Remove Device
+
+Remove an existing device.
+
+```
+rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {}
+```
+
+> Request
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the device to be removed. |
+
+> Response
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the removed device. |
+| `status` | string | Status message. |
+
+---
+
+##### Update Device
+
+Update an existing device.
+
+```
+rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {}
+```
+
+> Request
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the device to be updated. |
+| `device_name` | string | Updated name of the device. |
+| `device_type` | string | Updated type of the device. |
+| `device_location` | string | Updated location of the device. |
+
+> Response
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the updated device. |
+| `status` | string | Status message. |
+
+---
+
+##### Get Device
+
+Get details of a device.
+
+```
+rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {}
+```
+
+> Request
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the device to get details of. |
+
+> Response
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the device. |
+| `device_name` | string | Name of the device. |
+| `device_type` | string | Type of the device. |
+| `device_location` | string | Location of the device. |
+
+---
+
+##### List Devices
+
+Get a list of all devices.
+
+```
+rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {}
+```
+
+> Response
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `devices` | list of objects | List of all devices. |
+| `status` | string | Status message. |
+
+> Devices List Object
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `device_id` | string | ID of the device. |
+| `device_name` | string | Name of the device. |
+| `device_type` | string | Type of the device. |
+| `device_location` | string | Location of the device. |
+
+---
+
+That's all! Thank you for using OpeniotDeviceService.w
