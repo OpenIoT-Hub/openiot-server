@@ -7,7 +7,14 @@ option go_package = "openiot/user";
 import "base.proto";
 
 service OpeniotUserService {
-  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){}
+  // interact with user table.
+  rpc CreateUser(CreateUserReq) returns (CreateUserRsp) {}
+  rpc RemoveUser(RemoveUserReq) returns (RemoveUserRsp) {}
+  rpc UpdateUser(UpdateUserReq) returns (UpdateUserRsp) {}
+
+  // interact with both user table and organization table.
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp) {}
+  rpc ListUserInfo(ListUserInfoReq) returns (ListUserInfoRsp) {}
 }
 
 message User {
@@ -24,13 +31,44 @@ message UserInfo {
 
 /******************************/
 /** Request Collection, Req **/
+message CreateUserReq {
+  optional string name = 2; // 用户名称
+  optional string email = 3; // 用户工作邮箱
+  optional string phone_num = 4; // 用户手机号码
+  optional string avatar = 5; // 用户头像地址
+}
+message RemoveUserReq {
+  uint64 user_id = 1;
+}
+message UpdateUserReq {
+  string name = 1; // 用户名称
+  string email = 2; // 用户工作邮箱
+  string phone_num = 3; // 用户手机号码
+  string avatar = 4; // 用户头像地址
+}
 message GetUserInfoReq {
   uint64 user_id = 1;
+}
+message ListUserInfoReq {
+
 }
 
 /******************************/
 /** Response Collection, Rsp **/
+message CreateUserRsp {
+  BaseRsp base = 1;
+}
+message RemoveUserRsp {
+  BaseRsp base = 1;
+}
+message UpdateUserRsp {
+  BaseRsp base = 1;
+}
 message GetUserInfoRsp {
   BaseRsp base = 1;
   UserInfo user_info = 2;
+}
+message ListUserInfoRsp {
+  ListRsp list_info = 1;
+  repeated UserInfo info_list = 2;
 }
