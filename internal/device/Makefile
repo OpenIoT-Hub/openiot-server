@@ -4,8 +4,6 @@ generate:
 	-service "openiot-device" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	-combine-service ./../../idl/ base.proto \
-	-use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" \
 	-I ./../../idl/ device.proto
 
 .PHONY: run_client
@@ -19,3 +17,6 @@ run_server:
 # Service: user
 # Path: internal/user
 # Optional: -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen"
+# kitex -service "openiot-user" -module "github.com/OpenIoT-Hub/openiot-server" \
+# -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" \
+# -type protobuf -I ./../../idl/ device.proto

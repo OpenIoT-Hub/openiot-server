@@ -4,8 +4,6 @@ package idl;
 
 option go_package = "openiot/common";
 
-import "google/protobuf/any.proto";
-
 service OpeniotCommonService {
   rpc Ping(PingReq) returns (BaseRsp){};
 }
