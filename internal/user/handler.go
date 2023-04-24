@@ -28,3 +28,27 @@ func (s *OpeniotUserServiceImpl) GetUserInfo(ctx context.Context, req *user.GetU
 	resp.Base = base
 	return
 }
+
+// CreateUser implements the OpeniotUserServiceImpl interface.
+func (s *OpeniotUserServiceImpl) CreateUser(ctx context.Context, req *user.CreateUserReq) (resp *user.CreateUserRsp, err error) {
+	// TODO: Your code here...
+	return
+}
+
+// RemoveUser implements the OpeniotUserServiceImpl interface.
+func (s *OpeniotUserServiceImpl) RemoveUser(ctx context.Context, req *user.RemoveUserReq) (resp *user.RemoveUserRsp, err error) {
+	// TODO: Your code here...
+	return
+}
+
+// UpdateUser implements the OpeniotUserServiceImpl interface.
+func (s *OpeniotUserServiceImpl) UpdateUser(ctx context.Context, req *user.UpdateUserReq) (resp *user.UpdateUserRsp, err error) {
+	// TODO: Your code here...
+	return
+}
+
+// ListUserInfo implements the OpeniotUserServiceImpl interface.
+func (s *OpeniotUserServiceImpl) ListUserInfo(ctx context.Context, req *user.ListUserInfoReq) (resp *user.ListUserInfoRsp, err error) {
+	// TODO: Your code here...
+	return
+}

@@ -4,7 +4,6 @@ generate:
 	-service "openiot-user" \
 	-module "github.com/OpenIoT-Hub/openiot-server" \
 	-type protobuf \
-	-combine-service ./../../idl/ base.proto \
 	-use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" \
 	-I ./../../idl/ user.proto
 
