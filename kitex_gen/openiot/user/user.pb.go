@@ -8,7 +8,7 @@ package user
 
 import (
 	context "context"
-	common "github.com/OpenIoT-Hub/openiot-server/internal/user/kitex_gen/openiot/common"
+	common "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

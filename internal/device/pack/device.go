@@ -16,7 +16,7 @@ type (
 )
 
 func (v1 *DataV1) GetTableData() (TableData, error) {
-	//  根据version=v1从extranal解析数据
+	//  根据version=v1从external解析数据
 	var (
 		data TableData
 	)
@@ -25,7 +25,7 @@ func (v1 *DataV1) GetTableData() (TableData, error) {
 }
 
 func (v1 *DataV1) GetChartData() (ChartData, error) {
-	// 根据version=v1从extranal解析数据
+	// 根据version=v1从external解析数据
 	var (
 		data ChartData
 	)

@@ -4,7 +4,7 @@ package openiotcommonservice
 
 import (
 	"context"
-	common "github.com/OpenIoT-Hub/openiot-server/internal/user/kitex_gen/openiot/common"
+	common "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/common"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
 )

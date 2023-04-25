@@ -2,7 +2,7 @@
 package openiotcommonservice
 
 import (
-	common "github.com/OpenIoT-Hub/openiot-server/internal/user/kitex_gen/openiot/common"
+	common "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/common"
 	server "github.com/cloudwego/kitex/server"
 )
 

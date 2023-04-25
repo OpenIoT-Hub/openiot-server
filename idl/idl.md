@@ -46,7 +46,7 @@ The following is the list of api defined in the idl files.
 
 - `GET     /api/v1/user/:id`
 
-> **TODO**: add authority in v2 API. The plan of RBAC authority system, is a independent module. For each request in API-gateway, it would ask the authority module primary. If there is a success content of response, then gateway will send it to the actually module like user or device.
+> **TODO**: add authority in v2 API. The plan of RBAC authority system, is an independent module. For each request in API-gateway, it would ask the authority module primary. If there is a success content of response, then gateway will send it to the actual module like user or device.
 
 #### Some Introduction
 
@@ -72,18 +72,18 @@ rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {}
 
 > Request
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `device_name` | string | Name of the device. |
-| `device_type` | string | Type of the device. |
+| Field             | Type   | Description             |
+|-------------------|--------|-------------------------|
+| `device_name`     | string | Name of the device.     |
+| `device_type`     | string | Type of the device.     |
 | `device_location` | string | Location of the device. |
 
 > Response
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field       | Type   | Description                     |
+|-------------|--------|---------------------------------|
 | `device_id` | string | ID of the newly created device. |
-| `status` | string | Status message. |
+| `status`    | string | Status message.                 |
 
 ---
 
@@ -97,16 +97,16 @@ rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {}
 
 > Request
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field       | Type   | Description                     |
+|-------------|--------|---------------------------------|
 | `device_id` | string | ID of the device to be removed. |
 
 > Response
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field       | Type   | Description               |
+|-------------|--------|---------------------------|
 | `device_id` | string | ID of the removed device. |
-| `status` | string | Status message. |
+| `status`    | string | Status message.           |
 
 ---
 
@@ -120,19 +120,19 @@ rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {}
 
 > Request
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `device_id` | string | ID of the device to be updated. |
-| `device_name` | string | Updated name of the device. |
-| `device_type` | string | Updated type of the device. |
+| Field             | Type   | Description                     |
+|-------------------|--------|---------------------------------|
+| `device_id`       | string | ID of the device to be updated. |
+| `device_name`     | string | Updated name of the device.     |
+| `device_type`     | string | Updated type of the device.     |
 | `device_location` | string | Updated location of the device. |
 
 > Response
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field       | Type   | Description               |
+|-------------|--------|---------------------------|
 | `device_id` | string | ID of the updated device. |
-| `status` | string | Status message. |
+| `status`    | string | Status message.           |
 
 ---
 
@@ -146,17 +146,17 @@ rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {}
 
 > Request
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field       | Type   | Description                         |
+|-------------|--------|-------------------------------------|
 | `device_id` | string | ID of the device to get details of. |
 
 > Response
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `device_id` | string | ID of the device. |
-| `device_name` | string | Name of the device. |
-| `device_type` | string | Type of the device. |
+| Field             | Type   | Description             |
+|-------------------|--------|-------------------------|
+| `device_id`       | string | ID of the device.       |
+| `device_name`     | string | Name of the device.     |
+| `device_type`     | string | Type of the device.     |
 | `device_location` | string | Location of the device. |
 
 ---
@@ -171,18 +171,18 @@ rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {}
 
 > Response
 
-| Field | Type | Description |
-| --- | --- | --- |
+| Field     | Type            | Description          |
+|-----------|-----------------|----------------------|
 | `devices` | list of objects | List of all devices. |
-| `status` | string | Status message. |
+| `status`  | string          | Status message.      |
 
 > Devices List Object
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `device_id` | string | ID of the device. |
-| `device_name` | string | Name of the device. |
-| `device_type` | string | Type of the device. |
+| Field             | Type   | Description             |
+|-------------------|--------|-------------------------|
+| `device_id`       | string | ID of the device.       |
+| `device_name`     | string | Name of the device.     |
+| `device_type`     | string | Type of the device.     |
 | `device_location` | string | Location of the device. |
 
 ---

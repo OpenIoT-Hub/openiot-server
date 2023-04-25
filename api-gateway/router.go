@@ -3,7 +3,7 @@
 package main
 
 import (
-	handler "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/handler"
+	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/handler"
 	"github.com/cloudwego/hertz/pkg/app/server"
 )
 

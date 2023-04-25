@@ -20,6 +20,6 @@ CREATE TABLE `User`  (
     `gorm.Model` varchar(255) NOT NULL,
     `name` varchar(255) NULL,
     `password` varchar(255) NULL,
-    `phonenum` int NULL,
+    `phone_num` int NULL,
     PRIMARY KEY (`gorm.Model`)
 );

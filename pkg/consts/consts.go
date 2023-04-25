@@ -16,22 +16,22 @@ const (
 	RPCTimeout     = 3 * time.Second
 	ConnectTimeout = 50 * time.Millisecond
 
-	// 服务名
+	// Server Name
 	GatewayServiceName = "openiot-gateway"
 	UserServiceName    = "openiot-user"
 	DeviceServiceName  = "openiot-device"
 
-	// 服务端口
+	// Server Port
 	GatewayListenAddress       = "127.0.0.1:8080"
 	UserServiceListenAddress   = "127.0.0.1:8081"
 	DeviceServiceListenAddress = "127.0.0.1:8082"
 
-	// 模型表格名
+	// Model Table Name
 	UserTableName      = "user"
 	AuthorityTableName = "authority"
 	DeviceTableName    = "device"
 
-	// 雪花
+	// Snowflake Algorithm
 	SnowflakeWorkerID     = 0
 	SnowflakeDatacenterID = 0
 

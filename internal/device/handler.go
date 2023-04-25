@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	device "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/device"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/device"
 )
 
 // OpeniotDeviceServiceImpl implements the last service interface defined in the IDL.

@@ -71,7 +71,7 @@ func (s *Snowflake) NextVal() int64 {
 		return 0
 	}
 	s.timestamp = now
-	r := int64((t)<<timestampShift | (s.datacenterid << datacenteridShift) | (s.workerid << workeridShift) | (s.sequence))
+	r := (t)<<timestampShift | (s.datacenterid << datacenteridShift) | (s.workerid << workeridShift) | (s.sequence)
 	s.Unlock()
 	return r
 }

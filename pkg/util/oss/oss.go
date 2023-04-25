@@ -12,7 +12,7 @@ func handleError(err error) {
 }
 
 var (
-	OssClient = new(oss.Client)
+	Client = new(oss.Client)
 )
 
 func Setup() {
@@ -37,7 +37,7 @@ func Setup() {
 func main() {
 	bucketName := "<yourBucketName>"
 	// 创建存储空间。
-	err := OssClient.CreateBucket(bucketName)
+	err := Client.CreateBucket(bucketName)
 	if err != nil {
 		handleError(err)
 	}
