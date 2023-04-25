@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	user "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user/openiotuserservice"
 	"net"
 
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
@@ -11,6 +10,7 @@ import (
 
 	"github.com/OpenIoT-Hub/openiot-server/config"
 	"github.com/OpenIoT-Hub/openiot-server/internal/user/model"
+	user "github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user/openiotuserservice"
 	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
 )
 

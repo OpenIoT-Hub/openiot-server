@@ -19,6 +19,7 @@ const (
 	// 服务名
 	GatewayServiceName = "openiot-gateway"
 	UserServiceName    = "openiot-user"
+	DeviceServiceName  = "openiot-device"
 
 	// 服务端口
 	GatewayListenAddress       = "127.0.0.1:8080"

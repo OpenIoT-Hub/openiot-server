@@ -69,7 +69,7 @@ func GetUserInfoByID(userId uint) (pack.UserInfo, int) {
 		Find(&info).Error; err == gorm.ErrRecordNotFound {
 		return info, errno.ErrorDatabaseRecordNotFound
 	} else if err != nil {
-		return info, errno.ErrorDatabaseQuery
+		return info, errno.ErrorDatabaseOperate
 	}
 
 	return info, errno.Success
@@ -85,7 +85,7 @@ func GetPositionsByID(userId uint) ([]string, int) {
 		Find(&positions).Error; err == gorm.ErrRecordNotFound {
 		return positions, errno.ErrorDatabaseRecordNotFound
 	} else if err != nil {
-		return positions, errno.ErrorDatabaseQuery
+		return positions, errno.ErrorDatabaseOperate
 	}
 
 	return positions, errno.Success

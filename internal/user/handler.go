@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/OpenIoT-Hub/openiot-server/internal/user/pack"
 	"github.com/OpenIoT-Hub/openiot-server/internal/user/service"
+	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/common"
 	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/user"
 )
 
@@ -11,8 +12,8 @@ import (
 type OpeniotUserServiceImpl struct{}
 
 // Ping implements the OpeniotUserServiceImpl interface.
-func (s *OpeniotUserServiceImpl) Ping(ctx context.Context, req *user.PingReq) (resp *user.BaseRsp, err error) {
-	resp = new(user.BaseRsp)
+func (s *OpeniotUserServiceImpl) Ping(ctx context.Context, req *common.PingReq) (resp *common.BaseRsp, err error) {
+	resp = new(common.BaseRsp)
 	resp.StatusCode = 200
 	resp.StatusMsg = "Pong!"
 	return
