@@ -1,7 +1,6 @@
 .PHONY: update
 update:
-	hz update \
- 	-idl ../idl/*.proto
+	hz update -proto_path ../idl/api
 
 .PHONY: build
 build:
