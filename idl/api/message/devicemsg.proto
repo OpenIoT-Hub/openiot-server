@@ -10,9 +10,6 @@ import "api/model.proto";
 /******************************/
 /** Request Collection, Req **/
 /******************************/
-message PingReq {
-  string message = 1;
-}
 message CreateDeviceReq {
   double Longitude = 1[(api.form)="longitude"];
   double Latitude = 2[(api.form)="latitude"];;

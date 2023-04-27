@@ -4,7 +4,6 @@ package user
 
 import (
 	"context"
-
 	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/user"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
@@ -22,6 +21,10 @@ func GetUserInfo(ctx context.Context, c *app.RequestContext) {
 	}
 
 	resp := new(user.GetUserInfoRsp)
+
+	//res, errCode := rpc.GetUserInfo(ctx, &user.GetUserInfoReq{
+	//	UserId: req.UserId,
+	//})
 
 	c.JSON(consts.StatusOK, resp)
 }

@@ -38,16 +38,17 @@ message CreateUserReq {
   optional string avatar = 5; // 用户头像地址
 }
 message RemoveUserReq {
-  uint64 user_id = 1;
+  uint64 id = 1;
 }
 message UpdateUserReq {
-  string name = 1; // 用户名称
-  string email = 2; // 用户工作邮箱
-  string phone_num = 3; // 用户手机号码
-  string avatar = 4; // 用户头像地址
+  string id = 1; // 用户 ID
+  string name = 2; // 用户名称
+  string email = 3; // 用户工作邮箱
+  string phone_num = 4; // 用户手机号码
+  string avatar = 5; // 用户头像地址
 }
 message GetUserInfoReq {
-  uint64 user_id = 1;
+  uint64 id = 1;
 }
 message ListUserInfoReq {
 
