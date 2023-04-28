@@ -1,0 +1,107 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "openiot/api/device";
+
+import "api.proto";
+import "basic.proto";
+
+// 设备接口
+service OpeniotDeviceService {
+  // ListDevice 获取设备列表
+  rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {
+    option (api.get) = "api/v1/device";
+  }
+  // CreateDevice 添加新设备
+  rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {
+    option (api.post) = "/api/v1/device";
+  }
+  // RemoveDevice 从数据库中移除设备
+  rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {
+    option (api.delete) = "api/v1/device/{id}";
+  }
+  // UpdateDevice 更新设备信息
+  rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {
+    option (api.post) = "api/v1/device/{id}";
+  }
+  // GetDevice 通过 ID 获取指定设备信息
+  rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {
+    option (api.get) = "api/v1/device/{id}";
+  }
+}
+
+message DeviceV1 {
+  uint64 ID = 1;
+  int64 UpdatedAt = 2;
+  double Longitude = 3;
+  double Latitude = 4;
+  double Capacity = 5;
+  double Temperature = 6;
+  double Humidity = 7;
+  double CO2_CONC = 8;
+  double SoundIntensity = 9;
+  int64 State = 10;
+  string Info = 11;
+}
+message Device {
+  uint64 ID = 1;
+  int64 UpdatedAt = 2;
+  double Longitude = 3;
+  double Latitude = 4;
+  int64 version = 5;
+  int64 state = 6;
+  string comment = 7;
+  string external = 8;
+}
+
+/******************************/
+/** Request Collection, Req **/
+/******************************/
+message CreateDeviceReq {
+  double Longitude = 1[(api.form)="longitude"];
+  double Latitude = 2[(api.form)="latitude"];;
+  int64 version = 3[(api.form)="version"];;
+  int64 state = 4[(api.form)="state"];;
+  string comment = 5[(api.form)="comment"];;
+  string external = 6[(api.form)="external"];;
+}
+message RemoveDeviceReq {
+  string id = 1[(api.path)="id"];
+}
+message UpdateDeviceReq {
+  optional string id = 1[(api.path)="id"];
+  optional double Longitude = 2[(api.form)="longitude"];
+  optional double Latitude = 3[(api.form)="latitude"];;
+  optional int64 version = 4[(api.form)="version"];;
+  optional int64 state = 5[(api.form)="state"];;
+  optional string comment = 6[(api.form)="comment"];;
+  optional string external = 7[(api.form)="external"];;
+}
+message GetDeviceReq {
+  string id = 1[(api.path)="id"];
+}
+message ListDeviceReq {
+
+}
+
+/******************************/
+/** Response Collection, Rsp **/
+/******************************/
+message CreateDeviceRsp {
+  BaseRsp base = 1;
+}
+message RemoveDeviceRsp {
+  BaseRsp base = 1;
+}
+message UpdateDeviceRsp {
+  BaseRsp base = 1;
+}
+message GetDeviceRsp {
+  BaseRsp base = 1;
+  Device device = 2;
+}
+message ListDeviceRsp {
+  BaseRsp base = 1;
+  repeated Device device = 2;
+}

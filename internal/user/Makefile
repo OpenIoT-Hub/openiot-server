@@ -19,4 +19,4 @@ run_server:
 # Optional: -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen"
 # kitex -service "openiot-user" -module "github.com/OpenIoT-Hub/openiot-server" \
 # -use "github.com/OpenIoT-Hub/openiot-server/kitex_gen" \
-# -type protobuf -I ./../../idl/ user.proto
+# -type protobuf -I ./../../idl/ device.proto

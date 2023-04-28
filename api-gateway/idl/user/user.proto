@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "openiot/api/user";
+
+import "api.proto";
+import "basic.proto";
+
+// 用户接口
+service OpeniotUserService {
+  // interact with user table.
+  rpc CreateUser(CreateUserReq) returns (CreateUserRsp) {
+    option (api.post) = "/api/v1/user";
+  }
+  rpc RemoveUser(RemoveUserReq) returns (RemoveUserRsp) {
+    option (api.delete) = "/api/v1/user/{id}";
+  }
+  rpc UpdateUser(UpdateUserReq) returns (UpdateUserRsp) {
+    option (api.put) = "/api/v1/user/{id}";
+  }
+
+  // interact with both user table and organization table.
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoRsp){
+    option (api.get) = "/api/v1/user/{id}";
+  };
+  rpc ListUserInfo(ListUserInfoReq) returns (ListUserInfoRsp) {
+    option (api.get) = "/api/v1/user";
+  }
+}
+
+message User {
+  uint64 id = 1; // 用户id
+  string name = 2; // 用户名称
+  string email = 3; // 用户工作邮箱
+  string phone_num = 4; // 用户手机号码
+  string avatar = 5; // 用户头像地址
+}
+message UserInfo {
+  User user = 1;
+  repeated string position = 2; // 用户职位，从 Authority 表中读取
+}
+
+/******************************/
+/** Request Collection, Req **/
+message CreateUserReq {
+  optional string name = 2; // 用户名称
+  optional string email = 3; // 用户工作邮箱
+  optional string phone_num = 4; // 用户手机号码
+  optional string avatar = 5; // 用户头像地址
+}
+message RemoveUserReq {
+  uint64 id = 1;
+}
+message UpdateUserReq {
+  string name = 1; // 用户名称
+  string email = 2; // 用户工作邮箱
+  string phone_num = 3; // 用户手机号码
+  string avatar = 4; // 用户头像地址
+}
+message GetUserInfoReq {
+  uint64 id = 1[(api.path)="id"];
+}
+message ListUserInfoReq {
+
+}
+
+/******************************/
+/** Response Collection, Rsp **/
+message CreateUserRsp {
+  BaseRsp base = 1;
+}
+message RemoveUserRsp {
+  BaseRsp base = 1;
+}
+message UpdateUserRsp {
+  BaseRsp base = 1;
+}
+message GetUserInfoRsp {
+  BaseRsp base = 1;
+  UserInfo user_info = 2;
+}
+message ListUserInfoRsp {
+  ListRsp list_info = 1;
+  repeated UserInfo info_list = 2;
+}
