@@ -11,4 +11,5 @@ const (
 	ErrorDatabaseRecordNotFound = 50002
 	ErrorUserNotExist           = 50003
 	ErrorDeviceNotExist         = 50004
+	ErrorUserHaveExisted        = 50005
 )

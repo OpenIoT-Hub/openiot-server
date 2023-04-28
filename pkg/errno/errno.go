@@ -10,6 +10,7 @@ var MsgFlags = map[int]string{
 	ErrorDatabaseRecordNotFound: "数据库返回空值",
 	ErrorUserNotExist:           "用户不存在",
 	ErrorDeviceNotExist:         "设备不存在",
+	ErrorUserHaveExisted:        "用户已存在",
 }
 
 func GetMsg(code int) string {
