@@ -1,5 +1,6 @@
 package pack
 
+// TODO thinking about the solutions.
 type (
 	DeviceData interface {
 		GetTableData(TableData, error)
