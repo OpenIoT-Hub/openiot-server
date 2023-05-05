@@ -5,7 +5,7 @@ package user
 import (
 	"context"
 
-	user "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/api/user"
+	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/api/user"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 )

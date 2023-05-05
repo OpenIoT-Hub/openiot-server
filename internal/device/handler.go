@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"github.com/OpenIoT-Hub/openiot-server/kitex_gen/openiot/device"
-	device "github.com/OpenIoT-Hub/openiot-server/internal/device/kitex_gen/openiot/device"
 )
 
 // OpeniotDeviceServiceImpl implements the last service interface defined in the IDL.
@@ -34,7 +33,7 @@ func (s *OpeniotDeviceServiceImpl) GetDevice(ctx context.Context, req *device.Ge
 }
 
 // ListDevice implements the OpeniotDeviceServiceImpl interface.
-func (s *OpeniotDeviceServiceImpl) ListDevice(ctx context.Context, req *device.UpdateDeviceReq) (resp *device.ListDeviceRsp, err error) {
+func (s *OpeniotDeviceServiceImpl) ListDevice(ctx context.Context, req *device.ListDeviceReq) (resp *device.ListDeviceRsp, err error) {
 	// TODO: Your code here...
 	return
 }

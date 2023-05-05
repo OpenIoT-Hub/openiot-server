@@ -30,7 +30,6 @@ func main() {
 	}
 
 	svr := device.NewServer(
-		// FIXME rebuild Device Service Stub
 		new(OpeniotDeviceServiceImpl),
 		server.WithServerBasicInfo(&rpcinfo.EndpointBasicInfo{
 			ServiceName: consts.DeviceServiceName,

@@ -5,7 +5,7 @@ package device
 import (
 	"context"
 
-	device "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/api/device"
+	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/api/device"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 )
