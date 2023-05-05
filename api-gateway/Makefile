@@ -4,4 +4,8 @@ update:
 
 .PHONY: build
 build:
-	go build
+	go build -o hertz_test
+
+.PHONY: run
+run:
+	go run ./main.go ./router_gen.go
