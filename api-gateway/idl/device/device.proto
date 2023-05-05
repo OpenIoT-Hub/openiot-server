@@ -55,9 +55,8 @@ message Device {
   string external = 8;
 }
 
-/******************************/
+
 /** Request Collection, Req **/
-/******************************/
 message CreateDeviceReq {
   double Longitude = 1[(api.form)="longitude"];
   double Latitude = 2[(api.form)="latitude"];;
@@ -85,9 +84,8 @@ message ListDeviceReq {
 
 }
 
-/******************************/
+
 /** Response Collection, Rsp **/
-/******************************/
 message CreateDeviceRsp {
   BaseRsp base = 1;
 }
@@ -103,5 +101,6 @@ message GetDeviceRsp {
 }
 message ListDeviceRsp {
   BaseRsp base = 1;
-  repeated Device device = 2;
+  ListRsp list_info = 2;
+  repeated Device device = 3;
 }

@@ -41,22 +41,23 @@ message UserInfo {
   repeated string position = 2; // 用户职位，从 Authority 表中读取
 }
 
-/******************************/
+
 /** Request Collection, Req **/
 message CreateUserReq {
-  optional string name = 2; // 用户名称
-  optional string email = 3; // 用户工作邮箱
-  optional string phone_num = 4; // 用户手机号码
-  optional string avatar = 5; // 用户头像地址
+  optional string name = 1[(api.form)="name"]; // 用户名称
+  optional string email = 2[(api.form)="email"]; // 用户工作邮箱
+  optional string phone_num = 3[(api.form)="phone_num"]; // 用户手机号码
+  optional string avatar = 4[(api.form)="avatar"]; // 用户头像地址
 }
 message RemoveUserReq {
-  uint64 id = 1;
+  uint64 id = 1[(api.path)="id"];
 }
 message UpdateUserReq {
-  string name = 1; // 用户名称
-  string email = 2; // 用户工作邮箱
-  string phone_num = 3; // 用户手机号码
-  string avatar = 4; // 用户头像地址
+  uint64 id = 1[(api.path)="id"];
+  optional string name = 2[(api.form)="name"]; // 用户名称
+  optional string email = 3[(api.form)="email"]; // 用户工作邮箱
+  optional string phone_num = 4[(api.form)="phone_num"]; // 用户手机号码
+  optional string avatar = 5[(api.form)="avatar"]; // 用户头像地址
 }
 message GetUserInfoReq {
   uint64 id = 1[(api.path)="id"];
@@ -65,7 +66,7 @@ message ListUserInfoReq {
 
 }
 
-/******************************/
+
 /** Response Collection, Rsp **/
 message CreateUserRsp {
   BaseRsp base = 1;
@@ -81,6 +82,7 @@ message GetUserInfoRsp {
   UserInfo user_info = 2;
 }
 message ListUserInfoRsp {
-  ListRsp list_info = 1;
-  repeated UserInfo info_list = 2;
+  BaseRsp base = 1;
+  ListRsp list_info = 2;
+  repeated UserInfo user_info_list = 3;
 }
