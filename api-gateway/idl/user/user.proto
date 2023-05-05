@@ -5,7 +5,6 @@ package user;
 option go_package = "openiot/api/user";
 
 import "api.proto";
-import "basic.proto";
 
 // 用户接口
 service OpeniotUserService {
@@ -29,6 +28,7 @@ service OpeniotUserService {
   }
 }
 
+/** Model Definition **/
 message User {
   uint64 id = 1; // 用户id
   string name = 2; // 用户名称
@@ -39,6 +39,15 @@ message User {
 message UserInfo {
   User user = 1;
   repeated string position = 2; // 用户职位，从 Authority 表中读取
+}
+message BaseRsp {
+  int64 status_code = 1; // 状态码，0-成功，其他值-失败
+  string status_msg = 2; // 返回状态描述
+}
+message ListRsp {
+  int64 count = 1;      // list 总数
+  int64 page = 2;       // page number, default is 1.
+  int64 limit = 3;      // offset limit, default is 15
 }
 
 
@@ -69,7 +78,7 @@ message ListUserInfoReq {
 
 /** Response Collection, Rsp **/
 message CreateUserRsp {
-  baisc.BaseRsp base = 1;
+  BaseRsp base = 1;
 }
 message RemoveUserRsp {
   BaseRsp base = 1;
