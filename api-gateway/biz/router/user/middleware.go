@@ -30,3 +30,23 @@ func _getuserinfoMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _listuserinfoMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _createuserMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _removeuserMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _updateuserMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

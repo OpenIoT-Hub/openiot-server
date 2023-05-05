@@ -21,12 +21,12 @@ func Register(r *server.Hertz) {
 		_api := root.Group("/api", _apiMw()...)
 		{
 			_v1 := _api.Group("/v1", _v1Mw()...)
-			_v1.POST("/device", append(_deviceMw(), device.CreateDevice)...)
+			_v1.GET("/device", append(_listdeviceMw(), device.ListDevice)...)
 			_device := _v1.Group("/device", _deviceMw()...)
-			_device.DELETE("/:id", append(_removedeviceMw(), device.RemoveDevice)...)
-			_device.POST("/:id", append(_updatedeviceMw(), device.UpdateDevice)...)
-			_device.GET("/:id", append(_getdeviceMw(), device.GetDevice)...)
-			_device.GET("/:id", append(_listdeviceMw(), device.ListDevice)...)
+			_device.DELETE("/{id}", append(_removedeviceMw(), device.RemoveDevice)...)
+			_device.POST("/{id}", append(_updatedeviceMw(), device.UpdateDevice)...)
+			_device.GET("/{id}", append(_getdeviceMw(), device.GetDevice)...)
+			_v1.POST("/device", append(_createdeviceMw(), device.CreateDevice)...)
 		}
 	}
 }

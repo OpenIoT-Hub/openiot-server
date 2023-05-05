@@ -4,6 +4,7 @@ package user
 
 import (
 	"context"
+	user "github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/api/user"
 	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/model/openiot/user"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
@@ -25,6 +26,70 @@ func GetUserInfo(ctx context.Context, c *app.RequestContext) {
 	//res, errCode := rpc.GetUserInfo(ctx, &user.GetUserInfoReq{
 	//	UserId: req.UserId,
 	//})
+
+	c.JSON(consts.StatusOK, resp)
+}
+
+// CreateUser .
+// @router /api/v1/user [POST]
+func CreateUser(ctx context.Context, c *app.RequestContext) {
+	var err error
+	var req user.CreateUserReq
+	err = c.BindAndValidate(&req)
+	if err != nil {
+		c.String(consts.StatusBadRequest, err.Error())
+		return
+	}
+
+	resp := new(user.CreateUserRsp)
+
+	c.JSON(consts.StatusOK, resp)
+}
+
+// RemoveUser .
+// @router /api/v1/user/{id} [DELETE]
+func RemoveUser(ctx context.Context, c *app.RequestContext) {
+	var err error
+	var req user.RemoveUserReq
+	err = c.BindAndValidate(&req)
+	if err != nil {
+		c.String(consts.StatusBadRequest, err.Error())
+		return
+	}
+
+	resp := new(user.RemoveUserRsp)
+
+	c.JSON(consts.StatusOK, resp)
+}
+
+// UpdateUser .
+// @router /api/v1/user/{id} [PUT]
+func UpdateUser(ctx context.Context, c *app.RequestContext) {
+	var err error
+	var req user.UpdateUserReq
+	err = c.BindAndValidate(&req)
+	if err != nil {
+		c.String(consts.StatusBadRequest, err.Error())
+		return
+	}
+
+	resp := new(user.UpdateUserRsp)
+
+	c.JSON(consts.StatusOK, resp)
+}
+
+// ListUserInfo .
+// @router /api/v1/user [GET]
+func ListUserInfo(ctx context.Context, c *app.RequestContext) {
+	var err error
+	var req user.ListUserInfoReq
+	err = c.BindAndValidate(&req)
+	if err != nil {
+		c.String(consts.StatusBadRequest, err.Error())
+		return
+	}
+
+	resp := new(user.ListUserInfoRsp)
 
 	c.JSON(consts.StatusOK, resp)
 }

@@ -45,3 +45,8 @@ func _listdeviceMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }
+
+func _createdeviceMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}

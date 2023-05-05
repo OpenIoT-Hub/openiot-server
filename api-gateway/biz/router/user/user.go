@@ -21,10 +21,12 @@ func Register(r *server.Hertz) {
 		_api := root.Group("/api", _apiMw()...)
 		{
 			_v1 := _api.Group("/v1", _v1Mw()...)
-			{
-				_user := _v1.Group("/user", _userMw()...)
-				_user.GET("/info", append(_getuserinfoMw(), user.GetUserInfo)...)
-			}
+			_v1.GET("/user", append(_listuserinfoMw(), user.ListUserInfo)...)
+			_v1.POST("/user", append(_createuserMw(), user.CreateUser)...)
+			_user := _v1.Group("/user", _userMw()...)
+			_user.DELETE("/{id}", append(_removeuserMw(), user.RemoveUser)...)
+			_user.PUT("/{id}", append(_updateuserMw(), user.UpdateUser)...)
+			_user.GET("/{id}", append(_getuserinfoMw(), user.GetUserInfo)...)
 		}
 	}
 }
