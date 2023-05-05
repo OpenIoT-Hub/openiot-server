@@ -5,29 +5,35 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/rpc"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/errno"
+
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
 	"github.com/golang/glog"
+
+	"github.com/OpenIoT-Hub/openiot-server/api-gateway/biz/rpc"
+	"github.com/OpenIoT-Hub/openiot-server/pkg/consts"
 )
 
 func init() {
 	rpc.Setup()
+	flag.Parse()
 }
 
 func main() {
-	flag.Parse()
 	// write log file into dir before program exists.
 	defer glog.Flush()
 
-	h := server.Default()
+	svr := server.Default(
+		server.WithHostPorts(consts.GatewayListenAddress),
+		server.WithHandleMethodNotAllowed(true),
+	)
 
-	h.GET("/ping", func(c context.Context, ctx *app.RequestContext) {
-		ctx.JSON(consts.StatusOK, utils.H{"message": "pong"})
+	svr.GET("/ping", func(c context.Context, ctx *app.RequestContext) {
+		ctx.JSON(errno.Success, utils.H{"message": "pong"})
 	})
 
-	register(h)
-	h.Spin()
+	register(svr)
+	svr.Spin()
 }
