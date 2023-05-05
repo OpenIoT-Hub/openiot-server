@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+/api-gateway/out
 
 # Test binary, built with `go test -c`
 *.test
@@ -16,6 +17,7 @@
 
 # IDE workspace
 /.idea
+/.vscode
 
 # some development note
 /docs/note/assets

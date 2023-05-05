@@ -5,7 +5,7 @@ update:
 
 .PHONY: build
 build:
-	go build -o hertz_test
+	go build -o ./out/hertz_test
 
 .PHONY: run
 run:
