@@ -5,8 +5,8 @@ go 1.20
 require (
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.7+incompatible
 	github.com/cloudwego/fastpb v0.0.4
-	github.com/cloudwego/hertz v0.6.1
-	github.com/cloudwego/kitex v0.5.1
+	github.com/cloudwego/hertz v0.6.2
+	github.com/cloudwego/kitex v0.5.2
 	github.com/golang-jwt/jwt/v5 v5.0.0-rc.2
 	github.com/golang/glog v1.1.1
 	github.com/jinzhu/configor v1.2.1
@@ -72,3 +72,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/apache/thrift => github.com/apache/thrift v0.13.0

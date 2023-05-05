@@ -31,6 +31,7 @@ github.com/alecthomas/units v0.0.0-20190924025748-f65c72e2690d/go.mod h1:rBZYJk5
 github.com/aliyun/aliyun-oss-go-sdk v2.2.7+incompatible h1:KpbJFXwhVeuxNtBJ74MCGbIoaBok2uZvkD7QXp2+Wis=
 github.com/aliyun/aliyun-oss-go-sdk v2.2.7+incompatible/go.mod h1:T/Aws4fEfogEE9v+HPhhw+CntffsBHJ8nXQCwKr0/g8=
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
+github.com/apache/thrift v0.13.0 h1:5hryIiq9gtn+MiLVn0wP37kb/uTeRZgN08WoCsAhIhI=
 github.com/apache/thrift v0.13.0/go.mod h1:cp2SuWMxlEZw2r+iP2GNCdIi4C1qmUzdZFSVb+bacwQ=
 github.com/apache/thrift v0.18.1 h1:lNhK/1nqjbwbiOPDBPFJVKxgDEGSepKuTh6OLiXW8kg=
 github.com/apache/thrift v0.18.1/go.mod h1:rdQn/dCcDKEWjjylUeueum4vQEjG2v8v2PqriUnbr+I=
@@ -60,6 +61,8 @@ github.com/bytedance/gopkg v0.0.0-20230324090325-a00d8057bef9 h1:YTSJ7dHOZHZJxCw
 github.com/bytedance/gopkg v0.0.0-20230324090325-a00d8057bef9/go.mod h1:5tCTcGDVBC/YUpwmVUI14jYgkemT1CAeUyQe0J5DLUs=
 github.com/bytedance/mockey v1.2.0 h1:847+X2fBSM4s/AIN4loO5d16PCgEj53j7Q8YVB+8P6c=
 github.com/bytedance/mockey v1.2.0/go.mod h1:+Jm/fzWZAuhEDrPXVjDf/jLM2BlLXJkwk94zf2JZ3X4=
+github.com/bytedance/mockey v1.2.1 h1:g84ngI88hz1DR4wZTL3yOuqlEcq67MretBfQUdXwrmw=
+github.com/bytedance/mockey v1.2.1/go.mod h1:+Jm/fzWZAuhEDrPXVjDf/jLM2BlLXJkwk94zf2JZ3X4=
 github.com/bytedance/sonic v1.5.0/go.mod h1:ED5hyg4y6t3/9Ku1R6dU/4KyJ48DZ4jPhfY1O2AihPM=
 github.com/bytedance/sonic v1.8.1/go.mod h1:i736AoUSYt75HyZLoJW9ERYxcy6eaN6h4BZXU064P/U=
 github.com/bytedance/sonic v1.8.6 h1:aUgO9S8gvdN6SyW2EhIpAw5E4ChworywIEndZCkCVXk=
@@ -91,10 +94,14 @@ github.com/cloudwego/frugal v0.1.6 h1:aXJ7W0Omion1WTCe4JHAWinQmjXDYzHt03sabu3Rab
 github.com/cloudwego/frugal v0.1.6/go.mod h1:9ElktKsh5qd2zDBQ5ENhPSQV7F2dZ/mXlr1eaZGDBFs=
 github.com/cloudwego/hertz v0.6.1 h1:wUk7Jq8OHZGjR+Ik2DNFsph0qZAvhLnXoTNH2W5HFsI=
 github.com/cloudwego/hertz v0.6.1/go.mod h1:83EedHQvCXpveYh2r9us8YlQ1C28vPg93wPdB/QpJiA=
+github.com/cloudwego/hertz v0.6.2 h1:8NM0yHbyv8B4dNYgICirk733S7monTNB+uR9as1It1Y=
+github.com/cloudwego/hertz v0.6.2/go.mod h1:2em2hGREvCBawsTQcQxyWBGVlCeo+N1pp2q0HkkbwR0=
 github.com/cloudwego/kitex v0.0.4/go.mod h1:EIjPJ4Dom2ornk7xDCdKpUpOnf4Tulevimh4Tn05OGc=
 github.com/cloudwego/kitex v0.0.5/go.mod h1:sDiWpxbadYE5wFYj7MrSzm2Tle7TFZdcSezIErMsvp8=
 github.com/cloudwego/kitex v0.5.1 h1:00xnhWWBelxH9DmK28SwwdmmmpJMba17YDkIOLKifxY=
 github.com/cloudwego/kitex v0.5.1/go.mod h1:B3oH+MTQ7/wBL3BrCAMlyeyjAqOpi4pRzCvQcXN7RgM=
+github.com/cloudwego/kitex v0.5.2 h1:hsnuXbmbqTFFLAhV2WgbUdN9GMDhQE2sWUX1+ag3or8=
+github.com/cloudwego/kitex v0.5.2/go.mod h1:JpJVDdecl6bU5hlmtxooZgcnAvLXpYTU/A7UDdrTcPk=
 github.com/cloudwego/kitex-examples v0.0.0-20211019030300-7fd73f66ff4d/go.mod h1:YYForGqNLFhxmRJe3dZx61vJxJ4nxKURQBa3rBzXUJU=
 github.com/cloudwego/netpoll v0.0.2/go.mod h1:rZOiNI0FYjuvNybXKKhAPUja03loJi/cdv2F55AE6E8=
 github.com/cloudwego/netpoll v0.0.3/go.mod h1:rZOiNI0FYjuvNybXKKhAPUja03loJi/cdv2F55AE6E8=
