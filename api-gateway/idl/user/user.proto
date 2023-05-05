@@ -69,7 +69,7 @@ message ListUserInfoReq {
 
 /** Response Collection, Rsp **/
 message CreateUserRsp {
-  BaseRsp base = 1;
+  baisc.BaseRsp base = 1;
 }
 message RemoveUserRsp {
   BaseRsp base = 1;
