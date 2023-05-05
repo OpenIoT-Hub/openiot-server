@@ -8,10 +8,6 @@ import "api.proto";
 
 // 设备接口
 service OpeniotDeviceService {
-  // ListDevice 获取设备列表
-  rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {
-    option (api.get) = "api/v1/device";
-  }
   // CreateDevice 添加新设备
   rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {
     option (api.post) = "/api/v1/device";
@@ -27,6 +23,10 @@ service OpeniotDeviceService {
   // GetDevice 通过 ID 获取指定设备信息
   rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {
     option (api.get) = "api/v1/device/{id}";
+  }
+  // ListDevice 获取设备列表
+  rpc ListDevice(ListDeviceReq) returns (ListDeviceRsp) {
+    option (api.get) = "api/v1/device";
   }
 }
 
@@ -74,10 +74,10 @@ message CreateDeviceReq {
   string external = 6[(api.form)="external"];;
 }
 message RemoveDeviceReq {
-  string id = 1[(api.path)="id"];
+  uint64 id = 1[(api.path)="id"];
 }
 message UpdateDeviceReq {
-  optional string id = 1[(api.path)="id"];
+  optional uint64 id = 1[(api.path)="id"];
   optional double Longitude = 2[(api.form)="longitude"];
   optional double Latitude = 3[(api.form)="latitude"];;
   optional int64 version = 4[(api.form)="version"];;
@@ -86,7 +86,7 @@ message UpdateDeviceReq {
   optional string external = 7[(api.form)="external"];;
 }
 message GetDeviceReq {
-  string id = 1[(api.path)="id"];
+  uint64 id = 1[(api.path)="id"];
 }
 message ListDeviceReq {
 

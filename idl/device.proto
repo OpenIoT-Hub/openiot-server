@@ -4,14 +4,13 @@ package idl;
 
 option go_package = "openiot/device";
 
-import "base.proto";
-
 service OpeniotDeviceService {
+    rpc Ping(PingReq) returns (BaseRsp){};
     rpc CreateDevice(CreateDeviceReq) returns (CreateDeviceRsp) {}
     rpc RemoveDevice(RemoveDeviceReq) returns (RemoveDeviceRsp) {}
     rpc UpdateDevice(UpdateDeviceReq) returns (UpdateDeviceRsp) {}
     rpc GetDevice(GetDeviceReq) returns (GetDeviceRsp) {}
-    rpc ListDevice(UpdateDeviceReq) returns (ListDeviceRsp) {}
+    rpc ListDevice(ListDeviceReq) returns (ListDeviceRsp) {}
 }
 
 message DeviceV1 {
@@ -38,9 +37,11 @@ message Device {
     string external = 8;
 }
 
-/******************************/
+
 /** Request Collection, Req **/
-/******************************/
+message PingReq {
+    string message = 1;
+}
 message CreateDeviceReq {
     double Longitude = 1;
     double Latitude = 2;
@@ -50,10 +51,10 @@ message CreateDeviceReq {
     string external = 6;
 }
 message RemoveDeviceReq {
-    string id = 1;
+    uint64 id = 1;
 }
 message UpdateDeviceReq {
-    optional string id = 1;
+    optional uint64 id = 1;
     optional double Longitude = 2;
     optional double Latitude = 3;
     optional int64 version = 4;
@@ -62,15 +63,23 @@ message UpdateDeviceReq {
     optional string external = 7;
 }
 message GetDeviceReq {
-    string id = 1;
+    uint64 id = 1;
 }
 message ListDeviceReq {
 
 }
 
-/******************************/
+
 /** Response Collection, Rsp **/
-/******************************/
+message BaseRsp {
+    int64 status_code = 1; // 状态码，0-成功，其他值-失败
+    string status_msg = 2; // 返回状态描述
+}
+message ListRsp {
+    int64 count = 1;      // list 总数
+    int64 page = 2;       // page number, default is 1.
+    int64 limit = 3;      // offset limit, default is 15
+}
 message CreateDeviceRsp {
     BaseRsp base = 1;
 }
@@ -86,5 +95,6 @@ message GetDeviceRsp {
 }
 message ListDeviceRsp {
     BaseRsp base = 1;
-    repeated Device device = 2;
+    ListRsp list_info = 2;
+    repeated Device device = 3;
 }

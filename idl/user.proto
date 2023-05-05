@@ -4,9 +4,8 @@ package idl;
 
 option go_package = "openiot/user";
 
-import "base.proto";
-
 service OpeniotUserService {
+  rpc Ping(PingReq) returns (BaseRsp){};
   // interact with user table.
   rpc CreateUser(CreateUserReq) returns (CreateUserRsp) {}
   rpc RemoveUser(RemoveUserReq) returns (RemoveUserRsp) {}
@@ -29,8 +28,11 @@ message UserInfo {
   repeated string position = 2; // 用户职位，从 Authority 表中读取
 }
 
-/******************************/
+
 /** Request Collection, Req **/
+message PingReq {
+  string message = 1;
+}
 message CreateUserReq {
   optional string name = 2; // 用户名称
   optional string email = 3; // 用户工作邮箱
@@ -41,7 +43,7 @@ message RemoveUserReq {
   uint64 id = 1;
 }
 message UpdateUserReq {
-  string id = 1; // 用户 ID
+  uint64 id = 1; // 用户 ID
   string name = 2; // 用户名称
   string email = 3; // 用户工作邮箱
   string phone_num = 4; // 用户手机号码
@@ -54,8 +56,17 @@ message ListUserInfoReq {
 
 }
 
-/******************************/
+
 /** Response Collection, Rsp **/
+message BaseRsp {
+  int64 status_code = 1; // 状态码，0-成功，其他值-失败
+  string status_msg = 2; // 返回状态描述
+}
+message ListRsp {
+  int64 count = 1;      // list 总数
+  int64 page = 2;       // page number, default is 1.
+  int64 limit = 3;      // offset limit, default is 15
+}
 message CreateUserRsp {
   BaseRsp base = 1;
 }
@@ -70,6 +81,7 @@ message GetUserInfoRsp {
   UserInfo user_info = 2;
 }
 message ListUserInfoRsp {
-  ListRsp list_info = 1;
-  repeated UserInfo info_list = 2;
+  BaseRsp base = 1;
+  ListRsp list_info = 2;
+  repeated UserInfo user_info_list = 3;
 }
